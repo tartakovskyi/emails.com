@@ -11,4 +11,10 @@
 |
 */
 
-Route::get('/', 'MailSendController@index')->name('mailPage');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::get('/send', 'MailController@index');
