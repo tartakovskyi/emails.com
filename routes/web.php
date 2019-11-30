@@ -18,3 +18,7 @@ Route::get('/', function () {
 
 
 Route::get('/send', 'MailController@index');
+
+Route::get('phpinfo', function(){
+	phpinfo();
+});
