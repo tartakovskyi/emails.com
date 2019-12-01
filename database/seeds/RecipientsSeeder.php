@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Recipient;
 
 class RecipientsSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class RecipientsSeeder extends Seeder
      */
     public function run()
     {
-       $users = factory(App\Recipient::class, 25)->create();
+       $users = factory(App\Recipient::class, 50)->create();
     }
 }

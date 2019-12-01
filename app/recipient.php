@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipient extends Model
 {
-    public $email;
+    /*public $email;
     public $first_name;
     public $last_name;
-    public $status;
+    public $status;*/
 }

@@ -21,6 +21,8 @@ $factory->define(Recipient::class, function (Faker $faker) {
     	'email' => $faker->unique()->safeEmail,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'status' => $faker->boolean
+        'status' => $faker->boolean,
+        'created_at' => now(),
+        'updated_at' => now()
     ];
 });
