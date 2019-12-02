@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-use App\Recipient;
+use App\Group;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -16,12 +16,10 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Recipient::class, function (Faker $faker) {
-    return [
-    	'email' => $faker->unique()->safeEmail,
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'group_id' => $faker->randomDigitNot(0),
-        'status' => $faker->boolean
-    ];
+$factory->define(Group::class, function (Faker $faker) {
+	return [
+		'name' => $faker->word,
+		'description' => $faker->text($maxNbChars = 300),
+		'status_id' => $faker->randomDigitNot(0)
+	];
 });
