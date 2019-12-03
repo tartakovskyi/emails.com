@@ -16,9 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/send', 'MailController@index');
-
 Route::get('phpinfo', function(){
 	phpinfo();
 });
@@ -26,5 +23,5 @@ Route::get('phpinfo', function(){
 Route::get('/send', 'MailController@index');
 
 Route::prefix('recipients')->group(function () {
-    Route::get('/', 'RecipientsСontroller@index');
+    Route::get('/', 'RecipientsСontroller@indexAction');
 });
