@@ -22,3 +22,9 @@ Route::get('/send', 'MailController@index');
 Route::get('phpinfo', function(){
 	phpinfo();
 });
+
+Route::get('/send', 'MailController@index');
+
+Route::prefix('recipients')->group(function () {
+    Route::get('/', 'RecipientsСontroller@index');
+});
