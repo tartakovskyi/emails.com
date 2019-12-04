@@ -8,8 +8,24 @@ use App\Recipient;
 class RecipientsСontroller extends Controller
 {
 
-	public function indexAction($request = null) {
-		return view('recipients');
+	public function indexAction() {
+		$recipients = new Recipient;
+		$recArr = $recipients->getRecipients();
+		/*dd($recArr);*/
+
+		foreach ($recArr as $recipient) {
+			echo $recipient->email.'<br>';
+		}
+		/*echo '<table>';
+		foreach ($recArr as $recipient) {
+			echo '<tr>';
+			foreach ($recipient as $prop) {
+				echo '<td>'.$prop.'</td>';
+			}
+			echo '</tr>';
+		}
+		echo '</table>';*/
+		//return view('recipients');
 	} 
     
 }
