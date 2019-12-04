@@ -10,12 +10,9 @@ class RecipientsСontroller extends Controller
 
 	public function indexAction() {
 		$recipients = new Recipient;
-		$recArr = $recipients->getRecipients();
-		/*dd($recArr);*/
+		$recArr = $recipients->getRecipients()->toArray();
+		return view('recipients', ['recArr' => $recArr]);
 
-		foreach ($recArr as $recipient) {
-			echo $recipient->email.'<br>';
-		}
 		/*echo '<table>';
 		foreach ($recArr as $recipient) {
 			echo '<tr>';

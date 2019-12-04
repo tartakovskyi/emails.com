@@ -25,3 +25,9 @@ Route::get('/send', 'MailController@index');
 Route::prefix('recipients')->group(function () {
     Route::get('/', 'RecipientsСontroller@indexAction');
 });
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

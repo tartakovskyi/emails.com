@@ -9,6 +9,19 @@
     
     <body>
         <h1><?php echo 'Recipients'; ?></h1>
+        <table>
+        	@foreach ($recArr as $recipient)
+        	<tr>
+        		@foreach ($recipient as $prop)
+        		<td>
+        			{{$prop}}
+        		</td>
+        		@endforeach	
+        	</tr>
+        	@endforeach
+
+        	
+        </table>
     </body>
 
 </html>
