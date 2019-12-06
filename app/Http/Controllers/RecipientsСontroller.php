@@ -17,7 +17,7 @@ class RecipientsСontroller extends Controller
 	public function editAction($id) {
 		$recipient = new Recipient;
 		$recInfo = $recipient->getRecipientInfo($id);
-		dd($recInfo);
+		return view('recipient', ['recipient' => $recInfo, 'metaTitle' => 'Recipient information', 'title' => 'Recipient information']);
 	}
     
 }
