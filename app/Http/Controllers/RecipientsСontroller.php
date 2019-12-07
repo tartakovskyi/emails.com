@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Recipient;
+use App\Group;
 
 class RecipientsСontroller extends Controller
 {
@@ -17,7 +18,11 @@ class RecipientsСontroller extends Controller
 	public function editAction($id) {
 		$recipient = new Recipient;
 		$recInfo = $recipient->getRecipientInfo($id);
-		return view('recipient', ['recipient' => $recInfo, 'metaTitle' => 'Recipient information', 'title' => 'Recipient information']);
+
+		$groups = new Group;
+		$groupsArr = $groups->getGroupList($id);
+
+		return view('recipient', ['recipient' => $recInfo, 'groups' => $groupsArr, 'metaTitle' => 'Recipient information', 'title' => 'Recipient information']);
 	}
     
 }

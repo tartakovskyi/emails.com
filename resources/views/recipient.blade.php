@@ -1,24 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-6">
-        <form class="form">
+<div class="row justify-content-center">
+    <div class="col-5">
+        <form class="form d-flex flex-column align-items-center">
             <label>
                 <span>ID</span>
-                <input type="text" name="id" value="{{$recipient['id']}}">
+                <input type="text" class="form-control" name="id" value="{{$recipient['id']}}">
             </label>
             <label>
                 <span>E-mail</span>
-                <input type="text" name="email" value="{{$recipient['email']}}">
+                <input type="text" class="form-control" name="email" value="{{$recipient['email']}}">
             </label>
             <label>
                 <span>First name</span>
-                <input type="text" name="first_name" value="{{$recipient['first_name']}}">
+                <input type="text" class="form-control" name="first_name" value="{{$recipient['first_name']}}">
             </label>
             <label>
                 <span>Last name</span>
-                <input type="text" name="last_name" value="{{$recipient['last_name']}}">
+                <input type="text" class="form-control" name="last_name" value="{{$recipient['last_name']}}">
+            </label>
+            <label>
+            	<span>Group</span>
+            	 <select name="group_id" class="form-control">
+            		
+            		@foreach ($groups as $group)
+            		<option value="{{$group['id']}}" @if ($group['id'] === $recipient['group_id']) selected="selected" @endif>{{$group['group_name']}}</option>
+            		@endforeach
+            		
+
+            	</select>
             </label>
 
         </form>

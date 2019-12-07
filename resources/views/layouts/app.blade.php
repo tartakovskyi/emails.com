@@ -10,8 +10,8 @@
 
   <title>@if (!empty($metaTitle)) {{$metaTitle}} @else {{ config('app.name') }} @endif</title>
 
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/app.css" rel="stylesheet">
+  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 
@@ -42,7 +42,7 @@
 
   <header class="bg-primary text-white">
     <div class="container text-center">
-      <h1>@if (!empty($title)) $title @else {{ config('app.name') }} @endif</h1>
+      <h1>@if (!empty($title)) {{$title}} @else {{ config('app.name') }} @endif</h1>
       @if (!empty($subTitle)) $subTitle  <p class="lead">$subTitle</p> @endif
     </div>
   </header>

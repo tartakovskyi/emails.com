@@ -1,7 +1,25 @@
 header {
-  padding: 156px 0 100px;
+  padding: 100px 0;
+}
+
+main {
+	padding: 100px 0;
 }
 
 section {
-  padding: 150px 0;
+  padding: 100px 0;
+}
+
+.fixed-top {
+	position: sticky;
+}
+
+.form label {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.form select {
+	width: 100%;
 }

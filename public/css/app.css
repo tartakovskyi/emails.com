@@ -1,8 +1,30 @@
 header {
-  padding: 156px 0 100px;
+  padding: 100px 0;
+}
+
+main {
+  padding: 100px 0;
 }
 
 section {
-  padding: 150px 0;
+  padding: 100px 0;
+}
+
+.fixed-top {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.form label {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  width: 100%;
+}
+
+.form select {
+  width: 100%;
 }
 
