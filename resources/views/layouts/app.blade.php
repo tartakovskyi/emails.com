@@ -6,12 +6,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="">
+
 
   <title>@if (!empty($metaTitle)) {{$metaTitle}} @else {{ config('app.name') }} @endif</title>
 
-  <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ asset('img/favicon.svg') }}" type="image/svg+xml">
 
 </head>
 
@@ -42,7 +42,7 @@
 
   <header class="bg-primary text-white">
     <div class="container text-center">
-      <h1>@if (!empty($title)) {{$title}} @else {{ config('app.name') }} @endif</h1>
+      <h1>@if (!empty($title)) {{$title}} @else {{config('app.name')}} @endif</h1>
       @if (!empty($subTitle)) $subTitle  <p class="lead">$subTitle</p> @endif
     </div>
   </header>

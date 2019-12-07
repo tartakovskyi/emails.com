@@ -1,0 +1,48 @@
+header,
+main,
+section {
+	padding: 70px 0;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+.fixed-top {
+	position: sticky;
+}
+
+.form {
+	& * {
+		font-size: 1rem;
+	}
+
+	& label {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin-bottom: 20px;
+
+		&.checkbox {
+			flex-direction: row;
+			align-items: center;
+
+			& [type=checkbox] {
+				margin-right: 10px;
+			}
+		}
+
+		
+	}
+
+	& select,
+	& [type=text],
+	& [type=email] {
+		width: 100%;
+		margin-top: 5px;	
+	}
+}
+
+
+
+
