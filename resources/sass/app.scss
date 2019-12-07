@@ -1,25 +1,8 @@
-header {
-  padding: 100px 0;
-}
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-main {
-	padding: 100px 0;
-}
+// Variables
+@import 'variables';
 
-section {
-  padding: 100px 0;
-}
-
-.fixed-top {
-	position: sticky;
-}
-
-.form label {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-}
-
-.form select {
-	width: 100%;
-}
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
