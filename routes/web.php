@@ -23,8 +23,8 @@ Route::get('phpinfo', function(){
 Route::get('/send', 'MailController@index');
 
 Route::prefix('recipient')->group(function () {
-    Route::get('/', 'RecipientsСontroller@indexAction');
-    Route::get('/{id}/edit/', 'RecipientsСontroller@editAction');
+    Route::get('/', 'RecipientsСontroller@index');
+    Route::get('/{id}/edit/', 'RecipientsСontroller@edit');
 });
 
 Auth::routes();

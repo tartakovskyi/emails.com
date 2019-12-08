@@ -9,15 +9,15 @@ use App\Group;
 class RecipientsСontroller extends Controller
 {
 
-	public function indexAction() {
+	public function index() {
 		$recipients = new Recipient;
 		$recArr = $recipients->getRecipients();
 		return view('recipients', ['recArr' => $recArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients']);
 	}
 
-	public function editAction($id) {
-		$recipient = new Recipient;
-		$recInfo = $recipient->getRecipientInfo($id);
+	public function edit($id) {
+		$recipient = new Recipient($id);
+		$recInfo = $recipient->getRecipientInfo();
 
 		$groups = new Group;
 		$groupsArr = $groups->getGroupList($id);

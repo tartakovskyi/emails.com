@@ -16,13 +16,14 @@ class RecipientController extends Controller
      */
     public function index()
     {
-        echo json_encode('test');
+        //
     }
 
-    public function update($id) {
+    public function update($id, $data) {
         $recipient = new Recipient($id);
-        $test = $recipient->updateRecipient();
-        echo $test; 
+        //$test = $recipient->updateRecipient(Request $request);
+        //echo $test;
+        dd($data);
 
     }
 }

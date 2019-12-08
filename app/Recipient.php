@@ -8,7 +8,7 @@ class Recipient extends Model
 {
 	private $ID;
 
-	public function __construct ($id) {
+	public function __construct ($id = null) {
 		$this->ID = $id;
 	}
 
@@ -19,16 +19,17 @@ class Recipient extends Model
 		->toArray();
 	}
 
-	public function getRecipientInfo ($id) {
+	public function getRecipientInfo () {
 		return $this->leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
 		->select('recipients.id', 'email', 'first_name', 'last_name', 'group_id', 'status', 'group_name')
-		->find($id)
+		->find($this->ID)
 		->toArray();
 	}
 
 	public function updateRecipient () {
 		$recipient = $this::find($this->ID);
-		return $recipient;
+		// $data = $request;
+		// return print_r($data);
 	}
 
 

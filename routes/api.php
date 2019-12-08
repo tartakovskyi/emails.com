@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Route::post('save', 'API\RecipientController@index');
 
-Route::prefix('recipient')->group(function () {
-	Route::post('/{id}/update', 'API\RecipientController@update');
+Route::prefix('recipient')->group(function (Request $request) {
+	Route::post('/{id}/update', 'API\RecipientController@update', ['data' => Request $request->json()->toArray()]);
 });
