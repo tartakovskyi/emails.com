@@ -32,6 +32,7 @@
             <input type="checkbox" name="status" @if ($recipient['status'] === 1) checked @endif>
             <strong>Active</strong>
         </label>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="btn-toolbar">
             <button class="btn btn-light" id="backBtn">Back</button>
             <button class="btn btn-primary" id="saveRecipientBtn">Save</button>

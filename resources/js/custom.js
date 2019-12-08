@@ -10,7 +10,7 @@ $('#saveRecipientBtn').on('click', function(e) {
 	
 	let recData = {}
 	
-	$('#recipientForm [type=text], #recipientForm [type=email],  #recipientForm select').each(function() {
+	$('#recipientForm input:not([type=checkbox]),  #recipientForm select').each(function() {
 		let name = $(this).attr('name')
 		recData[name] = $(this).val()
 	})
@@ -20,18 +20,19 @@ $('#saveRecipientBtn').on('click', function(e) {
 		recData[name] = ($(this).prop('checked')) ? 1 : 0;
 	})
 
-	/*let response = fetch('ajax.php', {
+	console.log(recData)
+
+	let response = fetch('/api/recipient/'+recData.id+'/update/', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
 		},
-		body: JSON.stringify(prodData)
+		body: JSON.stringify(recData)
 	})
 	.then(function(response) {
 		response.json().then(function(data) {
-			changeTotal(data)
+			console.log(data)
 		})
-	})*/
+	})
 
-	console.log(recData)
 })

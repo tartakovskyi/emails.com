@@ -27,8 +27,6 @@ Route::prefix('recipient')->group(function () {
     Route::get('/{id}/edit/', 'RecipientsСontroller@editAction');
 });
 
-
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
