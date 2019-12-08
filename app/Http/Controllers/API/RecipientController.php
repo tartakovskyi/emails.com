@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Recipient;
@@ -19,11 +20,15 @@ class RecipientController extends Controller
         //
     }
 
-    public function update($id, $data) {
+    public function create (Request $request) {;
+       dd($request->get('data'));
+   }
+
+   public function update(Request $request, $id) {
         $recipient = new Recipient($id);
-        //$test = $recipient->updateRecipient(Request $request);
-        //echo $test;
-        dd($data);
+        $test = $recipient->updateRecipient($request->toArray());
+        /*$test = $request->toArray();*/
+        var_dump($test);
 
     }
 }

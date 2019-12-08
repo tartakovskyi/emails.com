@@ -23,8 +23,9 @@ Route::get('phpinfo', function(){
 Route::get('/send', 'MailController@index');
 
 Route::prefix('recipient')->group(function () {
-    Route::get('/list/', 'RecipientsСontroller@index');
-    Route::get('/{id}/edit/', 'RecipientsСontroller@edit');
+	Route::redirect('/', '/recipient/list');
+    Route::get('/list', 'RecipientsСontroller@index');
+    Route::get('/{id}/edit', 'RecipientsСontroller@edit');
 });
 
 Auth::routes();

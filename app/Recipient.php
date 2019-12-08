@@ -26,10 +26,15 @@ class Recipient extends Model
 		->toArray();
 	}
 
-	public function updateRecipient () {
+	public function updateRecipient ($data) {
 		$recipient = $this::find($this->ID);
-		// $data = $request;
-		// return print_r($data);
+		$recipient['email'] = $data['email'];
+		$recipient['first_name'] = $data['first_name'];
+		$recipient['last_name'] = $data['last_name'];
+		$recipient['group_id'] = $data['group_id'];
+		$recipient['status'] = $data['status'];
+		$recipient->save();
+		return $data;
 	}
 
 
