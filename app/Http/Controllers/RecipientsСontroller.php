@@ -12,7 +12,7 @@ class RecipientsСontroller extends Controller
 	public function index() {
 		$recipients = new Recipient;
 		$recArr = $recipients->getRecipients();
-		return view('recipients', ['recArr' => $recArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients']);
+		return view('recipient_list', ['recArr' => $recArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients']);
 	}
 
 	public function add() {
