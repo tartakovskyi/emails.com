@@ -64,6 +64,26 @@
   <script src="/js/app.js"></script>
   <script src="/js/jquery.easing.min.js"></script>
 
+  @if (request()->is('recipient/list'))
+  <link href="/css/datatables.min.css" rel="stylesheet">
+  <script src="/js/datatables.min.js"></script>
+  <script>
+    $('#recTable').DataTable({
+      columnDefs: [{
+        orderable: false,
+        className: 'select-checkbox',
+        targets: 0
+      },
+      {
+        orderable: false,
+        className: 'select-checkbox',
+        targets: 5
+      }]
+    });
+    $('.dataTables_length').addClass('bs-select');  
+  </script>
+  @endif
+
 </body>
 
 </html>
