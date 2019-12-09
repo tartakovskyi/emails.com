@@ -18,10 +18,10 @@ use Illuminate\Support\Str;
 
 $factory->define(Recipient::class, function (Faker $faker) {
     return [
-    	'email' => $faker->unique()->safeEmail,
+    	'email' => $faker->unique()->email,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'group_id' => $faker->randomDigitNot(0),
-        'status' => $faker->boolean
+        'status' => $faker->boolean($chanceOfGettingTrue = 70)
     ];
 });

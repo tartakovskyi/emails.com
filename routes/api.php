@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::prefix('recipient')->group(function () {
-	Route::post('/{id}/update', 'API\RecipientController@update');
-	
+	Route::post('insert', 'API\RecipientController@insert');
+	Route::post('/{id}/update', 'API\RecipientController@update');	
 });

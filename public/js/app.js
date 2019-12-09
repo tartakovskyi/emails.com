@@ -37068,7 +37068,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 $('#backBtn').on('click', function (e) {
   e.preventDefault();
   window.history.back();
-});
+}); //Saving recipient information changes
+
 $('#saveRecipientBtn').on('click', function (e) {
   e.preventDefault();
   var recData = {};
@@ -37080,18 +37081,19 @@ $('#saveRecipientBtn').on('click', function (e) {
     var name = $(this).attr('name');
     recData[name] = $(this).prop('checked') ? 1 : 0;
   });
-  console.log(recData);
-  var response = fetch('/api/recipient/' + recData.id + '/update/', {
+  var url = recData.id ? '/api/recipient/' + recData.id + '/update/' : '/api/recipient/insert/';
+  var response = fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
     body: JSON.stringify(recData)
-  }).then(function (response) {
-    response.json().then(function (data) {
-      console.log(data);
-    });
   });
+  /*.then(function(response) {
+  	response.json().then(function(data) {
+  		console.log(data)
+  	})
+  })*/
 });
 
 /***/ }),

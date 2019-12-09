@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipient extends Model
 {
-	private $ID;
-
-	public function __construct ($id = null) {
-		$this->ID = $id;
-	}
 
 	public function getRecipients () {
 		return $this->leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
@@ -19,22 +14,31 @@ class Recipient extends Model
 		->toArray();
 	}
 
-	public function getRecipientInfo () {
+	public function getRecipientInfo ($id) {
 		return $this->leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
 		->select('recipients.id', 'email', 'first_name', 'last_name', 'group_id', 'status', 'group_name')
-		->find($this->ID)
+		->find($id)
 		->toArray();
 	}
 
-	public function updateRecipient ($data) {
-		$recipient = $this::find($this->ID);
+	public function insertRecipient ($data) {
+		$recipient = new Recipient;
 		$recipient['email'] = $data['email'];
 		$recipient['first_name'] = $data['first_name'];
 		$recipient['last_name'] = $data['last_name'];
 		$recipient['group_id'] = $data['group_id'];
 		$recipient['status'] = $data['status'];
 		$recipient->save();
-		return $data;
+	}
+
+	public function updateRecipient ($id, $data) {
+		$recipient = $this::find($id);
+		$recipient['email'] = $data['email'];
+		$recipient['first_name'] = $data['first_name'];
+		$recipient['last_name'] = $data['last_name'];
+		$recipient['group_id'] = $data['group_id'];
+		$recipient['status'] = $data['status'];
+		$recipient->save();
 	}
 
 

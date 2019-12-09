@@ -18,7 +18,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Group::class, function (Faker $faker) {
 	return [
-		'group_name' => $faker->word,
+		'group_name' => $faker->sentence($maxNbWords = 3, $variableNbWords = true),
 		'group_description' => $faker->text($maxNbChars = 500),
 		'status_id' => $faker->randomDigitNot(0)
 	];

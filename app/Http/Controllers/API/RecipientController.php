@@ -20,15 +20,13 @@ class RecipientController extends Controller
         //
     }
 
-    public function create (Request $request) {;
-       dd($request->get('data'));
-   }
+    public function insert(Request $request) {
+        $recipient = new Recipient;
+        $recipient->insertRecipient($request->toArray());
+    }
 
-   public function update(Request $request, $id) {
-        $recipient = new Recipient($id);
-        $test = $recipient->updateRecipient($request->toArray());
-        /*$test = $request->toArray();*/
-        var_dump($test);
-
+    public function update(Request $request, $id) {
+        $recipient = new Recipient;
+        $recipient->updateRecipient($request->toArray(), $id);
     }
 }

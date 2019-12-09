@@ -25,6 +25,7 @@ Route::get('/send', 'MailController@index');
 Route::prefix('recipient')->group(function () {
 	Route::redirect('/', '/recipient/list');
     Route::get('/list', 'RecipientsСontroller@index');
+    Route::get('/add', 'RecipientsСontroller@add');
     Route::get('/{id}/edit', 'RecipientsСontroller@edit');
 });
 

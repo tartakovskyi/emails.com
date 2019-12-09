@@ -11,7 +11,7 @@
   <title>@if (!empty($metaTitle)) {{$metaTitle}} @else {{ config('app.name') }} @endif</title>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link rel="shortcut icon" href="{{ asset('img/favicon.svg') }}" type="image/svg+xml">
+  <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/png">
 
 </head>
 
@@ -27,13 +27,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+            <a class="nav-link" href="/recipient/list/">Recipients</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            <a class="nav-link" href="/group/list/">Groups</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+            <a class="nav-link" href="/campaign/list/">Campaigns</a>
           </li>
         </ul>
       </div>

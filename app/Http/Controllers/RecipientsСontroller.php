@@ -15,14 +15,22 @@ class RecipientsСontroller extends Controller
 		return view('recipients', ['recArr' => $recArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients']);
 	}
 
-	public function edit($id) {
-		$recipient = new Recipient($id);
-		$recInfo = $recipient->getRecipientInfo();
+	public function add() {
 
 		$groups = new Group;
-		$groupsArr = $groups->getGroupList($id);
+		$groupsArr = $groups->getGroupList();
 
-		return view('recipient', ['recipient' => $recInfo, 'groups' => $groupsArr, 'metaTitle' => 'Recipient information', 'title' => 'Recipient information']);
+		return view('recipient', ['recipient' => null, 'groups' => $groupsArr, 'metaTitle' => 'Add new recipient', 'title' => 'Add New Recipient']);
+	}
+
+	public function edit($id) {
+		$recipient = new Recipient;
+		$recInfo = $recipient->getRecipientInfo($id);
+
+		$groups = new Group;
+		$groupsArr = $groups->getGroupList();
+
+		return view('recipient', ['recipient' => $recInfo, 'groups' => $groupsArr, 'metaTitle' => 'Recipient information', 'title' => 'Recipient Information']);
 	}
     
 }
