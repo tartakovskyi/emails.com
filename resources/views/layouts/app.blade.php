@@ -66,6 +66,7 @@
 
   @if (request()->is('recipient/list'))
   <link href="/css/datatables.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <script src="/js/datatables.min.js"></script>
   <script>
     $('#recTable').DataTable({
@@ -78,7 +79,8 @@
         orderable: false,
         className: 'select-checkbox',
         targets: 5
-      }]
+      }],
+      "order": [[ 1, "asc" ]]
     });
     $('.dataTables_length').addClass('bs-select');  
   </script>
