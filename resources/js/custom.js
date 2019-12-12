@@ -1,10 +1,3 @@
-//Back to previous page
-$('#backBtn').on('click', function(e) {
-	e.preventDefault()
-	window.history.back()
-})
-
-
 //Adding 'Add new' button
 $(document).ready(function() {
 	const addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-primary" href="/recipient/add/">Add New Recipient</a></div>'
@@ -19,7 +12,7 @@ $('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function(e) {
 	
 	e.preventDefault()
 
-	const id = this.id
+	const btnID = this.id
 	
 	let recData = {}
 	
@@ -33,27 +26,33 @@ $('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function(e) {
 		recData[name] = ($(this).prop('checked')) ? 1 : 0;
 	})
 
-	ajax(id, recData)
+	ajax(btnID, recData)
 
 })
 
-const ajax = (id, recData) => {
+const ajax = (btnID, recData) => {
 
-	switch (id) {
+	console.log(btnID)
 
-		case '#saveRecBtn'
-		const url = '/api/recipient/insert/'
-		break
+	let url
 
-		case '#updateRecBtn'
-		const url = '/api/recipient/'+recData.id+'/update/'
-		break
+	switch (btnID) {
 
-		case '#delRecBtn'
-		const url = '/api/recipient/'+recData.id+'/delete/'
-		break
+		case 'saveRecBtn':
+		url = '/api/recipient/insert/'
+		break;
+
+		case 'updateRecBtn':
+		url = '/api/recipient/'+recData.id+'/update/'
+		break;
+
+		case 'delRecBtn':
+		url = '/api/recipient/'+recData.id+'/delete/'
+		break;
 
 	}
+
+	console.log(url)
 
 	let response = fetch(url, {
 		method: 'POST',

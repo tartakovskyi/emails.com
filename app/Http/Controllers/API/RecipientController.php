@@ -32,4 +32,9 @@ class RecipientController extends Controller
         $recipient->updateRecipient($id, $request->toArray());
         return response()->json(['status' => 'ok', 'text' => 'Changes was successfully saved!']);
     }
+
+    public function delete($id) {
+        Recipient::destroy($id);
+        return response()->json(['status' => 'ok', 'text' => 'Changes was successfully deleted!']);
+    }
 }

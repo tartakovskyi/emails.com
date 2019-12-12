@@ -37064,21 +37064,16 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-//Back to previous page
-$('#backBtn').on('click', function (e) {
-  e.preventDefault();
-  window.history.back();
-}); //Adding 'Add new' button
-
+//Adding 'Add new' button
 $(document).ready(function () {
   var addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-primary" href="/recipient/add/">Add New Recipient</a></div>';
   $('#recTable_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4');
-  $col = $('#recTable_wrapper .row:first-child').append(addBtn);
+  $col = $('#recTable_wrapper .row:first-child').addClass('align-items-center').append(addBtn);
 }); //Saving recipient information changes
 
-$('#saveRecipientBtn, #updateRecipientBtn, #delRecipientBtn').on('click', function (e) {
+$('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function (e) {
   e.preventDefault();
-  console.log(this.id);
+  var btnID = this.id;
   var recData = {};
   $('#recipientForm input:not([type=checkbox]),  #recipientForm select').each(function () {
     var name = $(this).attr('name');
@@ -37088,10 +37083,28 @@ $('#saveRecipientBtn, #updateRecipientBtn, #delRecipientBtn').on('click', functi
     var name = $(this).attr('name');
     recData[name] = $(this).prop('checked') ? 1 : 0;
   });
+  ajax(btnID, recData);
 });
 
-var ajax = function ajax() {
-  var url = recData.id ? '/api/recipient/' + recData.id + '/update/' : '/api/recipient/insert/';
+var ajax = function ajax(btnID, recData) {
+  console.log(btnID);
+  var url;
+
+  switch (btnID) {
+    case 'saveRecBtn':
+      url = '/api/recipient/insert/';
+      break;
+
+    case 'updateRecBtn':
+      url = '/api/recipient/' + recData.id + '/update/';
+      break;
+
+    case 'delRecBtn':
+      url = '/api/recipient/' + recData.id + '/delete/';
+      break;
+  }
+
+  console.log(url);
   var response = fetch(url, {
     method: 'POST',
     headers: {
