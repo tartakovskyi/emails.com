@@ -3,6 +3,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-5">
+        <span id="message"></span>
         <form class="form d-flex flex-column align-items-center" id="recipientForm">
             @if (request()->is('*/edit'))
             <label>

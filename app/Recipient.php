@@ -33,11 +33,11 @@ class Recipient extends Model
 
 	public function updateRecipient ($id, $data) {
 		$recipient = $this::find($id);
-		$recipient['email'] = $data['email'];
-		$recipient['first_name'] = $data['first_name'];
-		$recipient['last_name'] = $data['last_name'];
-		$recipient['group_id'] = $data['group_id'];
-		$recipient['status'] = $data['status'];
+		$recipient->email = $data['email'];
+		$recipient->first_name = $data['first_name'];
+		$recipient->last_name = $data['last_name'];
+		$recipient->group_id = $data['group_id'];
+		$recipient->status = $data['status'];
 		$recipient->save();
 	}
 

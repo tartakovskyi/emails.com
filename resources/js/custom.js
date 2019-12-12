@@ -5,6 +5,15 @@ $('#backBtn').on('click', function(e) {
 })
 
 
+//Adding 'Add new' button
+$(document).ready(function() {
+	const addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-primary" href="/recipient/add/">Add New Recipient</a></div>'
+
+	$('#recTable_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4')
+	$col = $('#recTable_wrapper .row:first-child').append(addBtn)
+}) 
+
+
 //Saving recipient information changes
 $('#saveRecipientBtn').on('click', function(e) {
 	
@@ -31,10 +40,15 @@ $('#saveRecipientBtn').on('click', function(e) {
 		},
 		body: JSON.stringify(recData)
 	})
-	/*.then(function(response) {
+	.then(function(response) {
 		response.json().then(function(data) {
-			console.log(data)
+			$('#message').addClass(data.status === 'ok' ? 'ok' : 'error').text(data.text).show()
+			if (!recData.id) {
+				$('#recipientForm input[type=text], #recipientForm input[type=email]').each(function () {
+					$(this).val('');
+				});
+			}
 		})
-	})*/
+	})
 
 })

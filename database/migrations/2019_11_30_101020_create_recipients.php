@@ -15,7 +15,7 @@ class CreateRecipients extends Migration
     {
         Schema::create('recipients', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email', 50)->unique();
+            $table->string('email', 50);
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
             $table->integer('group_id')->nullable();

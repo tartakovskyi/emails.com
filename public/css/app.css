@@ -11404,3 +11404,17 @@ h1 {
   margin-top: 5px;
 }
 
+#message {
+  font-size: 24px;
+  font-weight: 600;
+  display: none;
+}
+
+#message.ok {
+  color: green;
+}
+
+#message.error {
+  color: red;
+}
+
