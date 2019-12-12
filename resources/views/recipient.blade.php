@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="/recipient/list/" class="btn-link d-flex align-items-center return"><svg><use xlink:href="/img/icons.svg#back"></use></svg><span>Return to recipients list</span></a>
 <div class="row justify-content-center">
     <div class="col-5">
         <span id="message"></span>
@@ -40,8 +41,11 @@
         </label>
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="btn-toolbar">
-            <button class="btn btn-light" id="backBtn">Back</button>
-            <button class="btn btn-primary" id="saveRecipientBtn">Save</button>
+            @if (request()->is('*/edit'))<button class="btn btn-outline-danger mr-3" id="delRecBtn">Delete recipient</button> 
+            <button class="btn btn-primary" id="updateRecBtn">Save changes</button>
+            @else
+            <button class="btn btn-primary" id="saveRecBtn">Save recipient</button>
+            @endif
         </div>
     </form>
 </div>

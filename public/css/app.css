@@ -11418,3 +11418,14 @@ h1 {
   color: red;
 }
 
+.return {
+  font-size: 18px;
+}
+
+.return svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  margin-bottom: 3px;
+}
+

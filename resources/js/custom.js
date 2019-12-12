@@ -15,9 +15,11 @@ $(document).ready(function() {
 
 
 //Saving recipient information changes
-$('#saveRecipientBtn').on('click', function(e) {
+$('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function(e) {
 	
 	e.preventDefault()
+
+	const id = this.id
 	
 	let recData = {}
 	
@@ -31,7 +33,23 @@ $('#saveRecipientBtn').on('click', function(e) {
 		recData[name] = ($(this).prop('checked')) ? 1 : 0;
 	})
 
+
+
+	
+
+})
+
+const ajax = (id, recData) => {
 	const url = recData.id ? '/api/recipient/'+recData.id+'/update/' : '/api/recipient/insert/'
+
+	switch (id) {
+		case '#saveRecBtn'
+		
+	}
+
+
+
+
 
 	let response = fetch(url, {
 		method: 'POST',
@@ -51,4 +69,6 @@ $('#saveRecipientBtn').on('click', function(e) {
 		})
 	})
 
-})
+}
+
+

@@ -37076,8 +37076,9 @@ $(document).ready(function () {
   $col = $('#recTable_wrapper .row:first-child').append(addBtn);
 }); //Saving recipient information changes
 
-$('#saveRecipientBtn').on('click', function (e) {
+$('#saveRecipientBtn, #updateRecipientBtn, #delRecipientBtn').on('click', function (e) {
   e.preventDefault();
+  console.log(this.id);
   var recData = {};
   $('#recipientForm input:not([type=checkbox]),  #recipientForm select').each(function () {
     var name = $(this).attr('name');
@@ -37087,6 +37088,9 @@ $('#saveRecipientBtn').on('click', function (e) {
     var name = $(this).attr('name');
     recData[name] = $(this).prop('checked') ? 1 : 0;
   });
+});
+
+var ajax = function ajax() {
   var url = recData.id ? '/api/recipient/' + recData.id + '/update/' : '/api/recipient/insert/';
   var response = fetch(url, {
     method: 'POST',
@@ -37105,7 +37109,7 @@ $('#saveRecipientBtn').on('click', function (e) {
       }
     });
   });
-});
+};
 
 /***/ }),
 
