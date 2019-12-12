@@ -33,23 +33,27 @@ $('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function(e) {
 		recData[name] = ($(this).prop('checked')) ? 1 : 0;
 	})
 
-
-
-	
+	ajax(id, recData)
 
 })
 
 const ajax = (id, recData) => {
-	const url = recData.id ? '/api/recipient/'+recData.id+'/update/' : '/api/recipient/insert/'
 
 	switch (id) {
+
 		case '#saveRecBtn'
-		
+		const url = '/api/recipient/insert/'
+		break
+
+		case '#updateRecBtn'
+		const url = '/api/recipient/'+recData.id+'/update/'
+		break
+
+		case '#delRecBtn'
+		const url = '/api/recipient/'+recData.id+'/delete/'
+		break
+
 	}
-
-
-
-
 
 	let response = fetch(url, {
 		method: 'POST',
@@ -70,5 +74,4 @@ const ajax = (id, recData) => {
 	})
 
 }
-
 
