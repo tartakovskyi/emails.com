@@ -11429,3 +11429,43 @@ h1 {
   margin-bottom: 3px;
 }
 
+.select-checkbox {
+  text-align: center;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.filter-heading h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.filter-block {
+  margin-bottom: 20px;
+}
+
+.filter-block h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.filter-block label {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.filter-block label input[type=checkbox] {
+  margin-right: 10px;
+}
+
+.filter-block label span {
+  font-size: 1rem;
+}
+

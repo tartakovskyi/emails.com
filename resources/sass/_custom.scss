@@ -68,6 +68,44 @@ h1 {
 	}
 }
 
+.select-checkbox {
+	text-align: center;
+}
+
+.table th, .table td {
+	vertical-align: middle;
+}
+
+.filter-heading {
+	& h3 {
+		font-weight: 700;
+		text-transform: uppercase;
+		margin-bottom: 30px;
+	}
+}
+
+.filter-block {
+	margin-bottom: 20px;
+
+	& h6 {
+		font-weight: 700;
+		text-transform: uppercase;
+		margin-bottom: 15px;
+	}
+	& label {
+		display: flex;
+		align-items: center;
+
+		& input[type=checkbox] {
+			margin-right: 10px;
+		}
+
+		& span {
+			font-size: 1rem;
+		}
+	}
+}
+
 
 
 

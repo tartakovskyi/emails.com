@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Recipient extends Model
 {
 
-	public function getRecipients () {
+	public function getRecipients ($data) {
 		return $this->leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
 		->select('recipients.id', 'email', 'first_name', 'last_name', 'group_id', 'status', 'group_name')
+		->whereIn('status', $data['status'])
+		->whereIn('group_id', $data['group_id'])
 		->get()
 		->toArray();
 	}

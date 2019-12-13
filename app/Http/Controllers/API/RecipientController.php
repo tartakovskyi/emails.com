@@ -37,4 +37,13 @@ class RecipientController extends Controller
         Recipient::destroy($id);
         return response()->json(['status' => 'ok', 'text' => 'Changes was successfully deleted!']);
     }
+
+    public function filter(Request $request) {
+        $recipients = new Recipient;
+        $recArr = $recipients->getRecipients($request->toArray());
+
+        //return $recArr;
+
+        return view('recipients_table', ['recArr' => $recArr]);
+    }
 }

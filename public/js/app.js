@@ -37064,13 +37064,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-//Adding 'Add new' button
-$(document).ready(function () {
-  var addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-primary" href="/recipient/add/">Add New Recipient</a></div>';
-  $('#recTable_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4');
-  $col = $('#recTable_wrapper .row:first-child').addClass('align-items-center').append(addBtn);
-}); //Saving recipient information changes
-
+//Saving recipient information changes
 $('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function (e) {
   e.preventDefault();
   var btnID = this.id;
@@ -37087,7 +37081,6 @@ $('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function (e) {
 });
 
 var ajax = function ajax(btnID, recData) {
-  console.log(btnID);
   var url;
 
   switch (btnID) {
@@ -37101,10 +37094,8 @@ var ajax = function ajax(btnID, recData) {
 
     case 'delRecBtn':
       url = '/api/recipient/' + recData.id + '/delete/';
-      break;
   }
 
-  console.log(url);
   var response = fetch(url, {
     method: 'POST',
     headers: {
@@ -37123,6 +37114,69 @@ var ajax = function ajax(btnID, recData) {
     });
   });
 };
+/*FILTER FUNCTIONS*/
+//Choosing items
+
+
+$('.all').on('click', function () {
+  var status = $(this).prop('checked');
+  var id = $(this).data('target');
+  $('#' + id + ' input[type="checkbox"').each(function () {
+    $(this).prop('checked', status);
+  });
+  reloadList();
+});
+$('.items-set').on('click', function () {
+  var id = this.id;
+  $('[data-target=' + id + ']').prop('checked', false);
+  reloadList();
+}); //Forming the array of filter parameters
+
+var filterArr = {};
+
+var formFilterArr = function formFilterArr() {
+  $('.items-set').each(function () {
+    var paramName = $(this).data('param');
+    var paramArr = [];
+    $(this).find('input').each(function () {
+      if ($(this).prop('checked')) paramArr.push(this.name);
+    });
+    filterArr[paramName] = paramArr;
+  });
+}; //Adding 'Add new' button
+
+
+var makeAddBtn = function makeAddBtn() {
+  var addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/recipient/add/">Add New Recipient</a></div>';
+  $('#recTable_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4');
+  $col = $('#recTable_wrapper .row:first-child').append(addBtn);
+}; //Get recipients list with AJAX request 
+
+
+var reloadList = function reloadList() {
+  formFilterArr();
+  $('#recTableWrap').empty();
+  $('#recTableWrap').load('/api/recipient/filter/', filterArr, function () {
+    $('#recTable').DataTable({
+      columnDefs: [{
+        orderable: false,
+        className: 'select-checkbox',
+        targets: 0
+      }, {
+        orderable: false,
+        className: 'select-checkbox',
+        targets: 5
+      }],
+      "order": [[1, "asc"]]
+    });
+    $('.dataTables_length').addClass('bs-select');
+    makeAddBtn();
+  });
+};
+
+$(document).ready(function () {
+  reloadList();
+});
 
 /***/ }),
 

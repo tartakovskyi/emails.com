@@ -10,15 +10,16 @@ class RecipientsСontroller extends Controller
 {
 
 	public function index() {
-		$recipients = new Recipient;
-		$recArr = $recipients->getRecipients();
-		return view('recipient_list', ['recArr' => $recArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients']);
+		/*$recipients = new Recipient;
+		$recArr = $recipients->getRecipients();*/
+
+		$groupsArr = Group::get()->toArray();
+
+		return view('recipient_list', [/*'recArr' => $recArr,*/ 'groups' => $groupsArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients']);
 	}
 
 	public function add() {
-
-		$groups = new Group;
-		$groupsArr = $groups->getGroupList();
+		$groupsArr = Group::get()->toArray();
 
 		return view('recipient', ['recipient' => null, 'groups' => $groupsArr, 'metaTitle' => 'Add new recipient', 'title' => 'Add New Recipient']);
 	}
@@ -27,8 +28,7 @@ class RecipientsСontroller extends Controller
 		$recipient = new Recipient;
 		$recInfo = $recipient->getRecipientInfo($id);
 
-		$groups = new Group;
-		$groupsArr = $groups->getGroupList();
+		$groupsArr = Group::get()->toArray();
 
 		return view('recipient', ['recipient' => $recInfo, 'groups' => $groupsArr, 'metaTitle' => 'Recipient information', 'title' => 'Recipient Information']);
 	}

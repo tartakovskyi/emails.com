@@ -1,30 +1,50 @@
 @extends('layouts.app')
 
 @section('content')
-<table id="recTable" class="table table-striped table-bordered table-sm">
-	<thead>
-        <tr>
-            <th><input type="checkbox" name="all"></th>
-            <th class="th-sm">Email</th>
-            <th class="th-sm">Name</th>
-            <th class="th-sm">Recipients group</th>
-            <th class="th-sm">Status</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($recArr as $recipient)
-        <tr>
-            <td><input type="checkbox" name="rec_{{$recipient['id']}}"></td>
-            <td>{{$recipient['email']}}</td>
-            <td>{{$recipient['last_name']}}, {{$recipient['first_name']}}</td>
-            <td>{{$recipient['group_name']}}</td>
-            <td>@if ($recipient['status'] === 1) Active @else Not active @endif</td>
-            <td><a href="/recipient/{{$recipient['id']}}/edit/">edit</a></td>        
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-3">
+        <form id="filter">
+            <div class="filter-heading">
+                <h3>Filter</h3>
+            </div>
+            <div class="filter-block">
+                <h6>Statuses</h6>
+                <label>
+                    <input type="checkbox" name="allStatuses" class="all" data-target="statusSet" checked>
+                    <strong>All statuses</strong>
+                </label>
+                <fieldset id="statusSet" data-param="status" class="items-set">
+                    <label>
+                        <input type="checkbox" name="1" checked>
+                        <span>Active</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="0" checked>
+                        <span>Not active</span>
+                    </label>
+                </fieldset>
+            </div>
+            <div class="filter-block">
+                <h6>Groups</h6>
+                <label>
+                    <input type="checkbox" name="allGroups" class="all" data-target="groupSet" checked>
+                    <strong>All groups</strong>
+                </label>
+                <fieldset id="groupSet" data-param="group_id" class="items-set">
+                    @foreach ($groups as $group)
+                    <label>
+                        <input type="checkbox" name="{{$group['id']}}" checked>
+                        <span>{{$group['group_name']}}</span>
+                    </label>
+                    @endforeach
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <div class="col-9">
+        <div id="recTableWrap"></div>
+    </div>
+</div>
 @endsection
 
 
