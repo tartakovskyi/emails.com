@@ -27,6 +27,7 @@ Route::prefix('recipient')->group(function () {
     Route::get('/list', 'RecipientsСontroller@index');
     Route::get('/add', 'RecipientsСontroller@add');
     Route::get('/{id}/edit', 'RecipientsСontroller@edit');
+    Route::post('/filter', 'RecipientsСontroller@filter');
 });
 
 Auth::routes();

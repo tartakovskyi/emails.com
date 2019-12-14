@@ -32,10 +32,4 @@ class RecipientController extends Controller
         return response()->json(['status' => 'ok', 'text' => 'Recipient was successfully deleted!']);
     }
 
-    public function filter(Request $request) {
-        $recipients = new Recipient;
-        $recArr = $recipients->getRecipients($request->toArray());
-
-        return view('recipients_table', ['recArr' => $recArr]);
-    }
 }

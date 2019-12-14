@@ -37156,7 +37156,9 @@ var makeAddBtn = function makeAddBtn() {
 var reloadList = function reloadList() {
   formFilterArr();
   $('#recTableWrap').empty();
-  $('#recTableWrap').load('/api/recipient/filter/', filterArr, function () {
+  axios.post('/recipient/filter/', filterArr).then(function (response) {
+    console.log(response);
+    $('#recTableWrap').append(response.data);
     $('#recTable').DataTable({
       columnDefs: [{
         orderable: false,
@@ -37172,6 +37174,26 @@ var reloadList = function reloadList() {
     $('.dataTables_length').addClass('bs-select');
     makeAddBtn();
   });
+  /*$('#recTableWrap').load('/recipient/filter/', filterArr, function () {
+  
+  	$('#recTable').DataTable({
+  		columnDefs: [{
+  			orderable: false,
+  			className: 'select-checkbox',
+  			targets: 0
+  		},
+  		{
+  			orderable: false,
+  			className: 'select-checkbox',
+  			targets: 5
+  		}],
+  		"order": [[ 1, "asc" ]]
+  	})
+  
+  	$('.dataTables_length').addClass('bs-select') 
+  
+  	makeAddBtn()
+  })*/
 };
 
 $(document).ready(function () {

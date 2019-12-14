@@ -12,8 +12,8 @@ class Recipient extends Model
 
 	protected $fillable = ['email', 'first_name', 'last_name', 'group_id', 'status'];
 
-	public function getRecipients ($data) {
-		return $this->leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
+	public static function getRecipients ($data) {
+		return self::leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
 		->select('recipients.id', 'email', 'first_name', 'last_name', 'group_id', 'status', 'group_name')
 		->whereIn('status', $data['status'])
 		->whereIn('group_id', $data['group_id'])

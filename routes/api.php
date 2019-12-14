@@ -21,5 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('recipient')->group(function () {
 	Route::post('/save/{id?}', 'API\RecipientController@save');
 	Route::post('/delete/{id}', 'API\RecipientController@delete');
-	Route::post('filter', 'API\RecipientController@filter');
 });
