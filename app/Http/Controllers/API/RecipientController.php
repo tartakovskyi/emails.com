@@ -23,7 +23,7 @@ class RecipientController extends Controller
     public function save(Request $request, $id = null) {
         $recipient = new Recipient;
         $recipient->saveRecipient($request->toArray(), $id);
-        $word = ($id) ? 'Changes' : 'Recipient'; 
+        $word = $id ? 'Changes' : 'Recipient'; 
         return response()->json(['status' => 'ok', 'text' => $word.' was successfully saved!']);
     }
 
