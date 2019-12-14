@@ -20,29 +20,21 @@ class RecipientController extends Controller
         //
     }
 
-    public function insert(Request $request) {
+    public function save(Request $request, $id = null) {
         $recipient = new Recipient;
-        $recipient->insertRecipient($request->toArray());
-        return response()->json(['status' => 'ok', 'text' => 'Recipient was successfully added!']);
-
-    }
-
-    public function update(Request $request, $id) {
-        $recipient = new Recipient;
-        $recipient->updateRecipient($id, $request->toArray());
-        return response()->json(['status' => 'ok', 'text' => 'Changes was successfully saved!']);
+        $recipient->saveRecipient($request->toArray(), $id);
+        $word = ($id) ? 'Changes' : 'Recipient'; 
+        return response()->json(['status' => 'ok', 'text' => $word.' was successfully saved!']);
     }
 
     public function delete($id) {
         Recipient::destroy($id);
-        return response()->json(['status' => 'ok', 'text' => 'Changes was successfully deleted!']);
+        return response()->json(['status' => 'ok', 'text' => 'Recipient was successfully deleted!']);
     }
 
     public function filter(Request $request) {
         $recipients = new Recipient;
         $recArr = $recipients->getRecipients($request->toArray());
-
-        //return $recArr;
 
         return view('recipients_table', ['recArr' => $recArr]);
     }

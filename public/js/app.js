@@ -37085,15 +37085,15 @@ var ajax = function ajax(btnID, recData) {
 
   switch (btnID) {
     case 'saveRecBtn':
-      url = '/api/recipient/insert/';
+      url = '/api/recipient/save/';
       break;
 
     case 'updateRecBtn':
-      url = '/api/recipient/' + recData.id + '/update/';
+      url = '/api/recipient/save/' + recData.id + '/';
       break;
 
     case 'delRecBtn':
-      url = '/api/recipient/' + recData.id + '/delete/';
+      url = '/api/recipient/delete/' + recData.id + '/';
   }
 
   var response = fetch(url, {
