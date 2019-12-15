@@ -16,10 +16,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('phpinfo', function(){
-	phpinfo();
-});
-
 Route::get('/send', 'MailController@index');
 
 Route::prefix('recipient')->group(function () {
@@ -29,6 +25,12 @@ Route::prefix('recipient')->group(function () {
     Route::get('/{id}/edit', 'RecipientsСontroller@edit');
     Route::post('/filter', 'RecipientsСontroller@filter');
 });
+
+Route::prefix('group')->group(function() {
+	Route::redirect('/', '/group/list');
+    Route::get('/list', 'GroupController@index');
+});
+
 
 Auth::routes();
 
