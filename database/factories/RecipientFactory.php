@@ -22,6 +22,6 @@ $factory->define(Recipient::class, function (Faker $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'group_id' => $faker->randomDigitNot(0),
-        'status' => $faker->boolean($chanceOfGettingTrue = 70)
+        'status' => $faker->boolean($chanceOfGettingTrue = 75)
     ];
 });

@@ -17,7 +17,7 @@
             <td>{{$recipient['last_name']}}, {{$recipient['first_name']}}</td>
             <td>{{$recipient['group_name']}}</td>
             <td>@if ($recipient['status'] === 1) Active @else Not active @endif</td>
-            <td><a href="/recipient/{{$recipient['id']}}/edit/">edit</a></td>        
+            <td><a href="/recipient/edit/{{$recipient['id']}}/">edit</a></td>        
         </tr>
         @endforeach
     </tbody>

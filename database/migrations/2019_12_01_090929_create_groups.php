@@ -17,7 +17,7 @@ class CreateGroups extends Migration
             $table->increments('id');
             $table->string('group_name');
             $table->text('group_description');
-            $table->integer('status_id');
+            $table->integer('status');
             $table->timestamps();
         });
     }

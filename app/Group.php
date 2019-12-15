@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    public static function getGroupsList () {
-    	return self::get()->toArray();
+    public static function getGroupList ($fields = null) {
+    	$query = $fields ? self::select($fields)->get() : self::all();
+    	return $query->toArray();
     }
 }
