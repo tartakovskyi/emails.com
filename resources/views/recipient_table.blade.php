@@ -1,4 +1,4 @@
-<table id="recTable" class="table table-striped table-bordered table-sm">
+<table id="recipientTable" class="table table-striped table-bordered table-sm">
     <thead>
         <tr>
             <th><input type="checkbox" name="all"></th>

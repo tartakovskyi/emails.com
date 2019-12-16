@@ -93,28 +93,28 @@ const formFilterArr = () => {
 }
 
 //Adding 'Add new' button
-const makeAddBtn = () => {
-	const addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/recipient/add/">Add New Recipient</a></div>'
+const makeAddBtn = (list) => {
+	const addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/'+list+'/edit/">Add New Recipient</a></div>'
 
-	$('#recTable_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4')
-	$col = $('#recTable_wrapper .row:first-child').append(addBtn)
+	$('#'+list+'Table_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4')
+	$col = $('#'+list+'Table_wrapper .row:first-child').append(addBtn)
 }
 
 //Get recipients list with AJAX request 
 const reloadList = () => {
 
+	const list = $('#recipientTableWrap') ? 'recipient' : ($('#groupTableWrap')) ? 'group' : 'campaign'
+
 	formFilterArr()
 
-	$('#recTableWrap').empty()
+	$('#'+list+'TableWrap').empty()
 
-	axios.post('/recipient/filter/', filterArr)
+	axios.post('/'+list+'/filter/', filterArr)
 	.then(function (response) {
 
-		console.log(response)
+		$('#'+list+'TableWrap').append(response.data)
 
-		$('#recTableWrap').append(response.data)
-
-		$('#recTable').DataTable({
+		$('#'+list+'Table').DataTable({
 			columnDefs: [{
 				orderable: false,
 				className: 'select-checkbox',
@@ -130,35 +130,7 @@ const reloadList = () => {
 
 		$('.dataTables_length').addClass('bs-select') 
 
-		makeAddBtn()
-	})
-
-	/*$('#recTableWrap').load('/recipient/filter/', filterArr, function () {
-
-		$('#recTable').DataTable({
-			columnDefs: [{
-				orderable: false,
-				className: 'select-checkbox',
-				targets: 0
-			},
-			{
-				orderable: false,
-				className: 'select-checkbox',
-				targets: 5
-			}],
-			"order": [[ 1, "asc" ]]
-		})
-
-		$('.dataTables_length').addClass('bs-select') 
-
-		makeAddBtn()
-	})*/	
+		makeAddBtn(list)
+	})	
 }
-
-
-
-
-$(document).ready(function() {
-	reloadList()
-})
 

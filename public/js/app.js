@@ -37146,20 +37146,20 @@ var formFilterArr = function formFilterArr() {
 }; //Adding 'Add new' button
 
 
-var makeAddBtn = function makeAddBtn() {
-  var addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/recipient/add/">Add New Recipient</a></div>';
-  $('#recTable_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4');
-  $col = $('#recTable_wrapper .row:first-child').append(addBtn);
+var makeAddBtn = function makeAddBtn(list) {
+  var addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/' + list + '/edit/">Add New Recipient</a></div>';
+  $('#' + list + 'Table_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4');
+  $col = $('#' + list + 'Table_wrapper .row:first-child').append(addBtn);
 }; //Get recipients list with AJAX request 
 
 
 var reloadList = function reloadList() {
+  var list = $('#recipientTableWrap') ? 'recipient' : $('#groupTableWrap') ? 'group' : 'campaign';
   formFilterArr();
-  $('#recTableWrap').empty();
-  axios.post('/recipient/filter/', filterArr).then(function (response) {
-    console.log(response);
-    $('#recTableWrap').append(response.data);
-    $('#recTable').DataTable({
+  $('#' + list + 'TableWrap').empty();
+  axios.post('/' + list + '/filter/', filterArr).then(function (response) {
+    $('#' + list + 'TableWrap').append(response.data);
+    $('#' + list + 'Table').DataTable({
       columnDefs: [{
         orderable: false,
         className: 'select-checkbox',
@@ -37172,33 +37172,9 @@ var reloadList = function reloadList() {
       "order": [[1, "asc"]]
     });
     $('.dataTables_length').addClass('bs-select');
-    makeAddBtn();
+    makeAddBtn(list);
   });
-  /*$('#recTableWrap').load('/recipient/filter/', filterArr, function () {
-  
-  	$('#recTable').DataTable({
-  		columnDefs: [{
-  			orderable: false,
-  			className: 'select-checkbox',
-  			targets: 0
-  		},
-  		{
-  			orderable: false,
-  			className: 'select-checkbox',
-  			targets: 5
-  		}],
-  		"order": [[ 1, "asc" ]]
-  	})
-  
-  	$('.dataTables_length').addClass('bs-select') 
-  
-  	makeAddBtn()
-  })*/
 };
-
-$(document).ready(function () {
-  reloadList();
-});
 
 /***/ }),
 

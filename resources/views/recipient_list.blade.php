@@ -42,9 +42,14 @@
         </form>
     </div>
     <div class="col-9">
-        <div id="recTableWrap"></div>
+        <div id="recipientTableWrap"></div>
     </div>
 </div>
 @endsection
+
+<script>
+window.onload = reloadList()
+</script>
+
 
 

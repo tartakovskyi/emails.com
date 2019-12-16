@@ -20,6 +20,6 @@ $factory->define(Group::class, function (Faker $faker) {
 	return [
 		'group_name' => $faker->sentence($maxNbWords = 3, $variableNbWords = true),
 		'group_description' => $faker->text($maxNbChars = 500),
-		'status' => $faker->boolean($chanceOfGettingTrue = 75)
+		'group_status' => $faker->boolean($chanceOfGettingTrue = 75)
 	];
 });
