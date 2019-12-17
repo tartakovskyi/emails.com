@@ -101,9 +101,9 @@ const makeAddBtn = (list) => {
 }
 
 //Get recipients list with AJAX request 
-const reloadList = () => {
+function reloadList() {
 
-	const list = $('#recipientTableWrap') ? 'recipient' : ($('#groupTableWrap')) ? 'group' : 'campaign'
+	//const list = $('#recipientTableWrap') ? 'recipient' : ($('#groupTableWrap')) ? 'group' : 'campaign'
 
 	formFilterArr()
 
@@ -133,4 +133,10 @@ const reloadList = () => {
 		makeAddBtn(list)
 	})	
 }
+
+$(document).ready(function() {
+	if (typeof(list ) !== "undefined") {
+		reloadList()
+	}
+})
 

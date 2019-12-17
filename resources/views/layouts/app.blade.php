@@ -61,14 +61,22 @@
     <!-- /.container -->
   </footer>
 
+  @isset ($list)
+  <script>
+    const list = '{{$list}}';
+  </script>
+  @endisset
+
   <script src="/js/app.js"></script>
   <script src="/js/jquery.easing.min.js"></script>
 
-  @if (request()->is('recipient/list'))
+  @isset ($list)
   <link href="/css/datatables.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <script src="/js/datatables.min.js"></script>
-  @endif
+  @endisset
+
+  
 
 </body>
 

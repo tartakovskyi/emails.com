@@ -13,7 +13,7 @@ class RecipientsСontroller extends Controller
 	public function index() {
 		$groupArr = Group::getGroupList(['id','group_name']);
 
-		$data = ['groups' => $groupArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients'];
+		$data = ['groups' => $groupArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients', 'list' => 'recipient'];
 
 		return view('recipient_list', $data);
 	}

@@ -37153,8 +37153,8 @@ var makeAddBtn = function makeAddBtn(list) {
 }; //Get recipients list with AJAX request 
 
 
-var reloadList = function reloadList() {
-  var list = $('#recipientTableWrap') ? 'recipient' : $('#groupTableWrap') ? 'group' : 'campaign';
+function reloadList() {
+  //const list = $('#recipientTableWrap') ? 'recipient' : ($('#groupTableWrap')) ? 'group' : 'campaign'
   formFilterArr();
   $('#' + list + 'TableWrap').empty();
   axios.post('/' + list + '/filter/', filterArr).then(function (response) {
@@ -37174,7 +37174,13 @@ var reloadList = function reloadList() {
     $('.dataTables_length').addClass('bs-select');
     makeAddBtn(list);
   });
-};
+}
+
+$(document).ready(function () {
+  if (typeof list !== "undefined") {
+    reloadList();
+  }
+});
 
 /***/ }),
 

@@ -47,9 +47,5 @@
 </div>
 @endsection
 
-<script>
-window.onload = reloadList()
-</script>
-
 
 
