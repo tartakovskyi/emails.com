@@ -28,6 +28,8 @@ Route::prefix('recipient')->group(function () {
 Route::prefix('group')->group(function() {
 	Route::redirect('/', '/group/list');
     Route::get('/list', 'GroupController@index');
+    Route::get('/edit/{id?}', 'GroupController@edit');
+    Route::post('/filter', 'GroupController@filter');
 });
 
 
