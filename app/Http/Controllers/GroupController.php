@@ -10,7 +10,7 @@ class GroupController extends Controller
 {
 	public function index () {
 
-		$data = ['metaTitle' => 'Groups of the recipients', 'title' => 'Groups of the recipients', 'list' => 'group'];
+		$data = ['metaTitle' => 'Groups of the recipients', 'title' => 'Groups of the recipients', 'entity' => 'group', 'list' => true];
 
 		return view('group_list', $data);
 	}
@@ -28,7 +28,7 @@ class GroupController extends Controller
 
 		$title = $id ? 'Group information' : 'Add new group';
 
-		$data = ['group' => $groupInfo, 'metaTitle' => $title, 'title' => $title, 'recipients' => $recipients];
+		$data = ['group' => $groupInfo, 'metaTitle' => $title, 'title' => $title, 'recipients' => $recipients, 'entity' => 'group'];
 
 		return view('group', $data);
 	}

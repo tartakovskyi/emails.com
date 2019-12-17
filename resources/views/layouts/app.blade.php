@@ -61,9 +61,9 @@
     <!-- /.container -->
   </footer>
 
-  @isset ($list)
+  @isset ($entity)
   <script>
-    const list = '{{$list}}';
+    const entity = '{{$entity}}';
   </script>
   @endisset
 

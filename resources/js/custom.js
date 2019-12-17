@@ -1,67 +1,60 @@
 //Saving recipient information changes
-$('#saveRecBtn, #updateRecBtn, #delRecBtn').on('click', function(e) {
+$('#saveBtn, #updateBtn, #deleteBtn').on('click', function(e) {
 	
 	e.preventDefault()
 
 	const btnID = this.id
 	
-	let recData = {}
+	let entityData = {}
 	
-	$('#recipientForm input:not([type=checkbox]),  #recipientForm select').each(function() {
+	$('#'+entity+'Form input:not([type=checkbox]),  #'+entity+'Form select, #'+entity+'Form textarea').each(function() {
 		let name = $(this).attr('name')
-		recData[name] = $(this).val()
+		entityData[name] = $(this).val()
 	})
 
-	$('#recipientForm [type=checkbox]').each(function() {
+	$('#'+entity+'Form [type=checkbox]').each(function() {
 		let name = $(this).attr('name')
-		recData[name] = ($(this).prop('checked')) ? 1 : 0;
+		entityData[name] = ($(this).prop('checked')) ? 1 : 0;
 	})
 
-	ajax(btnID, recData)
+	ajax(btnID, entityData)
 
 })
 
-const ajax = (btnID, recData) => {
+const ajax = (btnID, entityData) => {
 
 	let url
 
 	switch (btnID) {
 
-		case 'saveRecBtn':
-		url = '/api/recipient/save/'
+		case 'saveBtn':
+		url = '/api/'+entity+'/save/'
 		break
 
-		case 'updateRecBtn':
-		url = '/api/recipient/save/'+recData.id+'/'
+		case 'updateBtn':
+		url = '/api/'+entity+'/save/'+entityData.id+'/'
 		break
 
-		case 'delRecBtn':
-		url = '/api/recipient/delete/'+recData.id+'/'
+		case 'deleteBtn':
+		url = '/api/'+entity+'/delete/'+entityData.id+'/'
 
 	}
 
-	let response = fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json;charset=utf-8'
-		},
-		body: JSON.stringify(recData)
-	})
+	let response = axios.post(url, entityData)
 	.then(function(response) {
-		response.json().then(function(data) {
-			$('#message').addClass(data.status === 'ok' ? 'ok' : 'error').text(data.text).show()
-			if (!recData.id) {
-				$('#recipientForm input[type=text], #recipientForm input[type=email]').each(function () {
-					$(this).val('');
-				});
-			}
-		})
+		console.log(response.data)
+		$('#message').addClass(response.data.status === 'ok' ? 'ok' : 'error').text(response.data.text).show()
+		if (!entityData.id) {
+			$('#'+entity+'Form input[type=text], #'+entity+'Form input[type=email]', '#'+entity+'Form textarea').each(function () {
+				$(this).val('');
+			});
+		}
 	})
+
 }
 
 
-
-/*FILTER FUNCTIONS*/
+	/*FILTER FUNCTIONS*/
 
 //Choosing items
 $('.all').on('click', function() {
@@ -93,11 +86,11 @@ const formFilterArr = () => {
 }
 
 //Adding 'Add new' button
-const makeAddBtn = (list) => {
-	const addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/'+list+'/edit/">Add New Recipient</a></div>'
+const makeAddBtn = (entity) => {
+	const addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/'+entity+'/edit/">Add New '+entity+'</a></div>'
 
-	$('#'+list+'Table_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4')
-	$col = $('#'+list+'Table_wrapper .row:first-child').append(addBtn)
+	$('#'+entity+'Table_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4')
+	$col = $('#'+entity+'Table_wrapper .row:first-child').append(addBtn)
 }
 
 //Get recipients list with AJAX request 
@@ -105,14 +98,14 @@ function reloadList() {
 
 	formFilterArr()
 
-	$('#'+list+'TableWrap').empty()
+	$('#'+entity+'TableWrap').empty()
 
-	axios.post('/'+list+'/filter/', filterArr)
+	axios.post('/'+entity+'/filter/', filterArr)
 	.then(function (response) {
 
-		$('#'+list+'TableWrap').append(response.data)
+		$('#'+entity+'TableWrap').append(response.data)
 
-		$('#'+list+'Table').DataTable({
+		$('#'+entity+'Table').DataTable({
 			columnDefs: [{
 				orderable: false,
 				className: 'select-checkbox',
@@ -121,19 +114,19 @@ function reloadList() {
 			{
 				orderable: false,
 				className: 'select-checkbox',
-				targets: (list == 'recipient') ? 5 : 4
+				targets: (entity == 'recipient') ? 5 : 4
 			}],
 			"order": [[ 1, "asc" ]]
 		})
 
 		$('.dataTables_length').addClass('bs-select') 
 
-		makeAddBtn(list)
+		makeAddBtn(entity)
 	})	
 }
 
 $(document).ready(function() {
-	if (typeof(list ) !== "undefined") {
+	if (window.location.pathname === '/'+entity+'/list/') {
 		reloadList()
 	}
 })

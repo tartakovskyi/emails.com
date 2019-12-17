@@ -39,12 +39,11 @@
             <input type="checkbox" name="status" @if (isset($recipient['status']) && $recipient['status'] === 1) checked @endif>
             <strong>Active</strong>
         </label>
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="btn-toolbar">
-            @isset ($recipient) <button class="btn btn-outline-danger mr-3" id="delRecBtn">Delete recipient</button> 
-            <button class="btn btn-primary" id="updateRecBtn">Save changes</button>
+            @isset ($recipient) <button class="btn btn-outline-danger mr-3" id="deleteBtn">Delete recipient</button> 
+            <button class="btn btn-primary" id="updateBtn">Save changes</button>
             @else
-            <button class="btn btn-primary" id="saveRecBtn">Save recipient</button>
+            <button class="btn btn-primary" id="saveBtn">Save recipient</button>
             @endisset
         </div>
     </form>
