@@ -28,16 +28,14 @@ class Recipient extends Model
 		->toArray();
 	}
 
-	public function insertRecipient ($data) {
-		$recipient = new Recipient;
-		$recipient->fill($data);
-		$recipient->save();
-	}
-
 	public function saveRecipient ($data, $id = null) {
 		$recipient = ($id) ? self::find($id) : new Recipient;
 		$recipient->fill($data);
 		$recipient->save();
+	}
+
+	public static function countRecipients ($id) {
+		return self::where('group_id', $id)->count();
 	}
 
 }

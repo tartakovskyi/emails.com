@@ -121,7 +121,7 @@ function reloadList() {
 			{
 				orderable: false,
 				className: 'select-checkbox',
-				targets: 5
+				targets: (list == 'recipient') ? 5 : 4
 			}],
 			"order": [[ 1, "asc" ]]
 		})

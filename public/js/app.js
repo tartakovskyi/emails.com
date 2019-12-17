@@ -37154,7 +37154,6 @@ var makeAddBtn = function makeAddBtn(list) {
 
 
 function reloadList() {
-  //const list = $('#recipientTableWrap') ? 'recipient' : ($('#groupTableWrap')) ? 'group' : 'campaign'
   formFilterArr();
   $('#' + list + 'TableWrap').empty();
   axios.post('/' + list + '/filter/', filterArr).then(function (response) {
@@ -37167,7 +37166,7 @@ function reloadList() {
       }, {
         orderable: false,
         className: 'select-checkbox',
-        targets: 5
+        targets: list == 'recipient' ? 5 : 4
       }],
       "order": [[1, "asc"]]
     });
