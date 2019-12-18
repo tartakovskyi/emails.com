@@ -67,6 +67,12 @@
   </script>
   @endisset
 
+  @isset ($id)
+  <script>
+    const recGroupId = '{{$id}}';
+  </script>
+  @endisset
+
   <script src="/js/app.js"></script>
   <script src="/js/jquery.easing.min.js"></script>
 

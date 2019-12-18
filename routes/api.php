@@ -22,3 +22,8 @@ Route::prefix('recipient')->group(function () {
 	Route::post('/save/{id?}', 'API\RecipientController@save');
 	Route::post('/delete/{id}', 'API\RecipientController@delete');
 });
+
+Route::prefix('group')->group(function () {
+	Route::post('/save/{id?}', 'API\GroupController@save');
+	Route::post('/delete/{id}', 'API\GroupController@delete');
+});

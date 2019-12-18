@@ -10,10 +10,10 @@ use App\Group;
 class RecipientsСontroller extends Controller
 {
 
-	public function index() {
+	public function index(Request $request) {
 		$groupArr = Group::getGroupNames();
 
-		$data = ['groups' => $groupArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients', 'entity' => 'recipient', 'list' => true];
+		$data = ['groups' => $groupArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients', 'entity' => 'recipient', 'id' => $request->id, 'list' => true];
 
 		return view('recipient_list', $data);
 	}

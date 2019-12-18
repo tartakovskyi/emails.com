@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
+	protected $fillable = ['group_name', 'group_description', 'last_name', 'group_status'];
 
     public static function getGroupList ($data) {
 
@@ -18,5 +19,11 @@ class Group extends Model
 
 	public function getGroupInfo ($id) {
 		return $this->find($id)->toArray();
+	}
+
+	public function saveGroup ($data, $id = null) {
+		$recipient = ($id) ? self::find($id) : new Group;
+		$recipient->fill($data);
+		$recipient->save();
 	}
 }

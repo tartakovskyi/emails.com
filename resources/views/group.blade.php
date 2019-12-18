@@ -23,7 +23,7 @@
             @isset ($group)
             <label>
                 <strong>Group recipients</strong>
-                <a href="/recipients/list/?id={{$group['id']}}">{{$recipients}} recipients</a>
+                <a href="/recipient/list/?id={{$group['id']}}">{{$recipients}} recipients</a>
             </label>
             @endisset
         <label class="checkbox">

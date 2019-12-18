@@ -1,3 +1,5 @@
+/*SAVING RECIPIENT, GROUP OR CAMPAIGN INFORMATION */
+
 //Saving recipient information changes
 $('#saveBtn, #updateBtn, #deleteBtn').on('click', function(e) {
 	
@@ -54,7 +56,7 @@ const ajax = (btnID, entityData) => {
 }
 
 
-	/*FILTER FUNCTIONS*/
+/*FILTER FUNCTIONS*/
 
 //Choosing items
 $('.all').on('click', function() {
@@ -126,8 +128,24 @@ function reloadList() {
 }
 
 $(document).ready(function() {
-	if (window.location.pathname === '/'+entity+'/list/') {
-		reloadList()
+	if (window.location.pathname.startsWith('/'+entity+'/list')) {
+		if (typeof recGroupId !== 'undefined' && typeof (recGroupId * 1) === 'number') {
+			$('#groupSet input').each(function(){
+				$(this).prop('checked',false)
+			})
+			$('#groupSet input[name='+recGroupId+']').trigger('click')
+		} else {
+			reloadList()
+		}
+
+		//Enable mass checking of the list items 
+		$('#'+entity+'Table input[name=all]').on('click', function() {
+			let status = $(this).prop('checked')
+			$('#'+entity+'Table td input[type="checkbox"]').each(function() {
+				$(this).prop('checked', status)
+			})
+		})
 	}
 })
+
 
