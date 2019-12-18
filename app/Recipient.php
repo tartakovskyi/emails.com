@@ -29,7 +29,7 @@ class Recipient extends Model
 	}
 
 	public function saveRecipient ($data, $id = null) {
-		$recipient = ($id) ? self::find($id) : new Recipient;
+		$recipient = $id ? self::find($id) : new Recipient;
 		$recipient->fill($data);
 		$recipient->save();
 	}

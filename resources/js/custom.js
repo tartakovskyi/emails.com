@@ -139,7 +139,7 @@ $(document).ready(function() {
 		}
 
 		//Enable mass checking of the list items 
-		$('#'+entity+'Table input[name=all]').on('click', function() {
+		$(document).on('click', '#'+entity+'Table input[name=all]', function() {
 			let status = $(this).prop('checked')
 			$('#'+entity+'Table td input[type="checkbox"]').each(function() {
 				$(this).prop('checked', status)
