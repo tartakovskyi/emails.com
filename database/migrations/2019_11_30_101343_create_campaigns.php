@@ -15,11 +15,11 @@ class CreateCampaigns extends Migration
     {
         Schema::create('campaings', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->tinyInteger('campaign_status');
+            $table->string('camp_name');
+            $table->tinyInteger('camp_status');
             $table->dateTime('autostart_at', 0)->nullable();
             $table->dateTime('started_at', 0)->nullable();
-            $table->dateTime('finished_at', 0)->nullable();
+            $table->dateTime('complited_at', 0)->nullable();
             $table->timestamps();
         });
     }
