@@ -13,7 +13,7 @@ class RecipientsСontroller extends Controller
 	public function index(Request $request) {
 		$groupArr = Group::getGroupNames();
 
-		$data = ['groups' => $groupArr, 'metaTitle' => 'Recipients list', 'title' => 'Recipients', 'entity' => 'recipient', 'id' => $request->id, 'list' => true];
+		$data = ['groups' => $groupArr, 'entity' => 'recipient', 'id' => $request->id, 'list' => true];
 
 		return view('recipient_list', $data);
 	}
@@ -31,7 +31,7 @@ class RecipientsСontroller extends Controller
 
 		$title = $id ? 'Recipient information' : 'Add new recipient';
 
-		$data = ['recipient' => $recInfo, 'groups' => $groupArr, 'metaTitle' => $title, 'title' => $title, 'entity' => 'recipient'];
+		$data = ['recipient' => $recInfo, 'groups' => $groupArr, 'entity' => 'recipient'];
 
 		return view('recipient', $data);
 	}

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('metaTitle', 'Recipient groups')
+@section('title', 'Groups')
+@section('subTitle', 'of the e-mail recipients')
+
 @section('content')
 <div class="row">
     <div class="col-3">

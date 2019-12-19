@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('metaTitle', 'Recipients list')
+@section('title', 'Recipients list')
+@section('subTitle', 'You may filter the recipients or change their data')
+
 @section('content')
 <div class="row">
     <div class="col-3">

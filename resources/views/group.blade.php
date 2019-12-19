@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@isset ($group)
+@section('metaTitle', 'Group information')
+@section('title', 'Group information')
+@else
+@section('metaTitle', 'Add new group')
+@section('title', 'Add new group')
+@endisset
+
+
 @section('content')
 <a href="/group/list/" class="btn-link d-flex align-items-center return"><svg><use xlink:href="/img/icons.svg#back"></use></svg><span>Return to group list</span></a>
 <div class="row justify-content-center">

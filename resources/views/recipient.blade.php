@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@isset ($recipient)
+@section('metaTitle', 'Recipient information')
+@section('title', 'Recipient information')
+@section('subTitle', 'You may change data or delete the recipient')
+@else
+@section('metaTitle', 'Add new recipient')
+@section('title', 'Add new recipient')
+@section('subTitle', 'Please, fill all of the fields of the form')
+@endisset
+
 @section('content')
 <a href="/recipient/list/" class="btn-link d-flex align-items-center return"><svg><use xlink:href="/img/icons.svg#back"></use></svg><span>Return to recipients list</span></a>
 <div class="row justify-content-center">

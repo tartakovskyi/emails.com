@@ -13,7 +13,7 @@ class CreateCampaigns extends Migration
      */
     public function up()
     {
-        Schema::create('campaings', function (Blueprint $table) {
+        Schema::create('campaigns', function (Blueprint $table) {
             $table->increments('id');
             $table->string('camp_name');
             $table->tinyInteger('camp_status');

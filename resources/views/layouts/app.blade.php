@@ -8,7 +8,8 @@
   <meta name="description" content="">
 
 
-  <title>@if (!empty($metaTitle)) {{$metaTitle}} @else {{ config('app.name') }} @endif</title>
+  <title>@yield('metaTitle', config('app.name'))</title>
+
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" type="image/png">
@@ -42,8 +43,8 @@
 
   <header class="bg-primary text-white">
     <div class="container text-center">
-      <h1>@if (!empty($title)) {{$title}} @else {{config('app.name')}} @endif</h1>
-      @if (!empty($subTitle)) $subTitle  <p class="lead">$subTitle</p> @endif
+      <h1>@yield('title', config('app.name'))</h1>
+      <p class="lead">@yield('subTitle')</p>
     </div>
   </header>
 
