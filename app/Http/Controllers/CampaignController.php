@@ -30,6 +30,8 @@ class CampaignController extends Controller
 
 		$data = ['campaign' => $campaignInfo, /*'recipients' => $recipients,*/ 'entity' => 'campaign'];
 
+		return dd(Recipient::getRecipientsByGroups());
+
 		return view('campaign', $data);
 	}
 

@@ -26,6 +26,10 @@
                 <input type="text" class="form-control" name="camp_name" @isset ($campaign) value="{{$campaign['camp_name']}}" @else placeholder="Motor-car enthusiasts" @endisset>
             </label>
             <label>
+                <strong>Letter template</strong>
+                <textarea name="camp_letter" rows="10" placeholder="Enter template of the letter wich will be sending to the campaign recipients">@isset ($campaign) {{$campaign['camp_letter']}}@endisset</textarea>
+            </label>
+            <label>
                 <strong>Status</strong>
                 <span>@isset ($campaign) {{$campaign['status_name']}} @else New @endisset</span>
                 <input type="hidden" name="camp_status" value="@isset ($campaign) {{$campaign['camp_status']}} @else 1 @endisset">

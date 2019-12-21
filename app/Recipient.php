@@ -21,6 +21,17 @@ class Recipient extends Model
 		->toArray();
 	}
 
+	public static function getRecipientsByGroups () {
+		return self::join('groups', 'recipients.group_id', '=', 'groups.id')
+		->select('recipients.id', 'email','group_id','group_name')
+		/**/
+		->where('status', 1)
+		->where('group_status', 1)
+		->get()
+		->groupBy('group_name')
+		->toArray();
+	}
+
 	public function getRecipientInfo ($id) {
 		return $this->leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
 		->select('recipients.id', 'email', 'first_name', 'last_name', 'status', 'group_id',  'group_name')
