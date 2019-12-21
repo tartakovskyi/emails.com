@@ -17,18 +17,18 @@ class CampaignController extends Controller
 
 	public function edit($id = null) {
 
-		$groupInfo = null;
+		$campaignInfo = null;
 
 		if ($id) {
 			$campaign = new Campaign;
 			$campaignInfo = $campaign->getCampaignInfo($id);
 		}
 
-		$recipients = Recipient::countRecipients($id);
+		//$recipients = Recipient::countRecipients($id);
 
 		$title = $id ? 'Campaign information' : 'Add new campaign';
 
-		$data = ['campaign' => $campaignInfo, 'recipients' => $recipients, 'entity' => 'campaign'];
+		$data = ['campaign' => $campaignInfo, /*'recipients' => $recipients,*/ 'entity' => 'campaign'];
 
 		return view('campaign', $data);
 	}
