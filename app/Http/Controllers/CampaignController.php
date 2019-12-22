@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Recipient;
+use App\Group;
 use App\Campaign;
 
 class CampaignController extends Controller
@@ -26,9 +27,9 @@ class CampaignController extends Controller
 
 		$recipients = Recipient::getRecipientsByGroups();
 
-		$title = $id ? 'Campaign information' : 'Add new campaign';
+		$groups = Group::getGroupNames();
 
-		$data = ['campaign' => $campaignInfo, 'recipients' => $recipients, 'entity' => 'campaign'];
+		$data = ['campaign' => $campaignInfo, 'recipients' => $recipients, 'groups' => $groups, 'entity' => 'campaign'];
 
 		return view('campaign', $data);
 	}

@@ -29,7 +29,7 @@ class Recipient extends Model
 		->get();
 
 		$count = $query->count();
-		$list = $query->groupBy('group_name')->toArray();
+		$list = $query->groupBy('group_id')->toArray();
 
 		return ['count' => $count, 'list' => $list];
 	}

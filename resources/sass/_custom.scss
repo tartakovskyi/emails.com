@@ -108,13 +108,51 @@ h1 {
 
 #campaignForm {
 	margin-bottom: 100px;
+
+}
+
+.rec-group {
+	margin-bottom: 20px;
+
+	&__heading {
+		display: flex;
+		align-items: center;
+		margin-bottom: 10px;
+
+		& a {
+			display: block;
+			margin-left: 10px;
+		}
+
+		& h4 {
+			margin-bottom: 0;
+		}
+	}
+
+	& input[type=checkbox] {
+		margin-right: 5px;
+	}
 }
 
 .rec-list {
-	display: flex;
+	display: none;
 	flex-wrap: wrap;
 	list-style: none;
+	padding-left: 0;
+
+	&.active {
+		display: flex;
+	}
+
+	&__item {
+		margin-right: 15px;
+
+		& a {
+			font-size: 14px;
+		}
+	}
 }
+
 
 
 

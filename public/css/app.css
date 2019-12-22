@@ -11473,10 +11473,47 @@ h1 {
   margin-bottom: 100px;
 }
 
-.rec-list {
+.rec-group {
+  margin-bottom: 20px;
+}
+
+.rec-group__heading {
   display: -webkit-box;
   display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.rec-group__heading a {
+  display: block;
+  margin-left: 10px;
+}
+
+.rec-group__heading h4 {
+  margin-bottom: 0;
+}
+
+.rec-group input[type=checkbox] {
+  margin-right: 5px;
+}
+
+.rec-list {
+  display: none;
   flex-wrap: wrap;
   list-style: none;
+  padding-left: 0;
+}
+
+.rec-list.active {
+  display: -webkit-box;
+  display: flex;
+}
+
+.rec-list__item {
+  margin-right: 15px;
+}
+
+.rec-list__item a {
+  font-size: 14px;
 }
 

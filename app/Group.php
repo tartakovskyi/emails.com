@@ -14,7 +14,7 @@ class Group extends Model
 	}
 
 	public static function getGroupNames () {
-		return self::select('id', 'group_name')->get()->toArray();
+		return self::select('id', 'group_name')->get()->pluck('group_name','id')->toArray();
 	}
 
 	public function getGroupInfo ($id) {

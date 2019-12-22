@@ -35,10 +35,10 @@
                     <strong>All groups</strong>
                 </label>
                 <fieldset id="groupSet" data-param="group_id" class="items-set">
-                    @foreach ($groups as $group)
+                    @foreach ($groups as $group_id => $group_name)
                     <label>
-                        <input type="checkbox" name="{{$group['id']}}" checked>
-                        <span>{{$group['group_name']}}</span>
+                        <input type="checkbox" name="{{$group_id}}" checked>
+                        <span>{{$group_name}}</span>
                     </label>
                     @endforeach
                 </fieldset>

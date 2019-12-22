@@ -40,8 +40,8 @@
                 @if (!$recipient)
                 <option disabled selected>Choose a group</option>
                 @endif
-                @foreach ($groups as $group)
-                <option value="{{$group['id']}}" @if (isset($recipient['group_id']) && $group['id'] === $recipient['group_id']) selected @endif>{{$group['group_name']}}</option>
+                @foreach ($groups as $group_id => $group_name)
+                <option value="{{$group_id}}" @if (isset($recipient['group_id']) && $group_id === $recipient['group_id']) selected @endif>{{$group_name}}</option>
                 @endforeach
             </select>
         </label>

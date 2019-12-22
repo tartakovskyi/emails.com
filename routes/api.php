@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 
@@ -26,4 +26,8 @@ Route::prefix('recipient')->group(function () {
 Route::prefix('group')->group(function () {
 	Route::post('/save/{id?}', 'API\GroupController@save');
 	Route::post('/delete/{id}', 'API\GroupController@delete');
+});
+
+Route::prefix('campaign')->group(function () {
+	Route::put('/{id}', 'API\GroupController@destroy');
 });

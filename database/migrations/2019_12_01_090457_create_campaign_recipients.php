@@ -15,6 +15,8 @@ class CreateCampaignRecipients extends Migration
     {
         Schema::create('campaign_recipients', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->tinyInteger('camp_id');
+            $table->smallInteger('rec_id');
             $table->timestamps();
         });
     }

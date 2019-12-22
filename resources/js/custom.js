@@ -44,7 +44,6 @@ const ajax = (btnID, entityData) => {
 
 	let response = axios.post(url, entityData)
 	.then(function(response) {
-		console.log(response.data)
 		$('#message').addClass(response.data.status === 'ok' ? 'ok' : 'error').text(response.data.text).show()
 		if (!entityData.id) {
 			$('#'+entity+'Form input[type=text], #'+entity+'Form input[type=email]', '#'+entity+'Form textarea').each(function () {
@@ -149,3 +148,33 @@ $(document).ready(function() {
 })
 
 
+/*CAMPAIGN PAGE*/
+//Select all the recipients
+$('.rec-group__heading input[type=checkbox]').on('click', function(e) {
+	let status = $(this).prop('checked')
+	let groupID = $(this).attr('name')
+	$('#'+groupID+' input[type=checkbox]').each(function() {
+		$(this).prop('checked', status)
+	})
+})
+
+//Show recipients list
+$('.rec-group__heading a').on('click', function(e) {
+	e.preventDefault()
+	let groupID = $(this).data('target')
+	$('#'+groupID).toggleClass('active')
+})
+
+//Save changes of the recipients list
+$('#saveCampRec').on('click',
+
+	)
+
+const addToCampaign = (arr) => {
+
+}
+
+
+const deleteFromCampaign = () => {
+
+}

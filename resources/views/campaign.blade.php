@@ -49,17 +49,21 @@
         </form>
     </div>
 </div>
-<div class="row justify-content-center">
-    <div class="col-10">
+<div class="row">
+    <div class="col-12 d-flex flex-column align-items-center">
         <h2>Select campaign recipients</h2>
         <form id="campaignRecipients">
             @foreach ($recipients['list'] as $group => $groupRecipients)
             <div class="rec-group">
-                <a href="#">{{$group}} <i class="fal fa-chevron-down"></i></a>
-                <ul class="rec-list">
+                <div class="rec-group__heading">
+                    <input type="checkbox" name="{{$group}}">
+                    <h4>{{$groups[$group]}}</h4>
+                    <a href="#" data-target="{{$group}}">Show recipients list</a>
+                </div>
+                <ul class="rec-list" id="{{$group}}">
                     @foreach ($groupRecipients as $recipient)
                     <li class="rec-list__item">
-                        <label>
+                        <label class="d-flex align-items-center">
                             <input type="checkbox" name="{{$recipient['id']}}"><a href="/recipient/edit/{{$recipient['id']}}" target="_blank">{{$recipient['email']}}</a>
                         </label>
                     </li>
@@ -67,6 +71,7 @@
                 </ul>
             </div>
             @endforeach
+            <button class="btn btn-primary" id="saveCampRec">Save changes</button>
         </form>
         
     </div>

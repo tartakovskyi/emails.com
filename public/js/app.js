@@ -37189,6 +37189,20 @@ $(document).ready(function () {
     });
   }
 });
+/*CAMPAIGN PAGE*/
+
+$('.rec-group__heading input[type=checkbox]').on('click', function (e) {
+  var status = $(this).prop('checked');
+  var groupID = $(this).attr('name');
+  $('#' + groupID + ' input[type=checkbox]').each(function () {
+    $(this).prop('checked', status);
+  });
+});
+$('.rec-group__heading a').on('click', function (e) {
+  e.preventDefault();
+  var groupID = $(this).data('target');
+  $('#' + groupID).toggleClass('active');
+});
 
 /***/ }),
 
