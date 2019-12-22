@@ -24,13 +24,11 @@ class CampaignController extends Controller
 			$campaignInfo = $campaign->getCampaignInfo($id);
 		}
 
-		//$recipients = Recipient::countRecipients($id);
+		$recipients = Recipient::getRecipientsByGroups();
 
 		$title = $id ? 'Campaign information' : 'Add new campaign';
 
-		$data = ['campaign' => $campaignInfo, /*'recipients' => $recipients,*/ 'entity' => 'campaign'];
-
-		return dd(Recipient::getRecipientsByGroups());
+		$data = ['campaign' => $campaignInfo, 'recipients' => $recipients, 'entity' => 'campaign'];
 
 		return view('campaign', $data);
 	}

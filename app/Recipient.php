@@ -22,14 +22,16 @@ class Recipient extends Model
 	}
 
 	public static function getRecipientsByGroups () {
-		return self::join('groups', 'recipients.group_id', '=', 'groups.id')
+		$query = self::join('groups', 'recipients.group_id', '=', 'groups.id')
 		->select('recipients.id', 'email','group_id','group_name')
-		/**/
 		->where('status', 1)
 		->where('group_status', 1)
-		->get()
-		->groupBy('group_name')
-		->toArray();
+		->get();
+
+		$count = $query->count();
+		$list = $query->groupBy('group_name')->toArray();
+
+		return ['count' => $count, 'list' => $list];
 	}
 
 	public function getRecipientInfo ($id) {

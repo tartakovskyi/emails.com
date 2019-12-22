@@ -11469,3 +11469,14 @@ h1 {
   font-size: 1rem;
 }
 
+#campaignForm {
+  margin-bottom: 100px;
+}
+
+.rec-list {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
