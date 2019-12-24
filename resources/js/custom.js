@@ -165,16 +165,30 @@ $('.rec-group__heading a').on('click', function(e) {
 	$('#'+groupID).toggleClass('active')
 })
 
-//Save changes of the recipients list
-$('#saveCampRec').on('click',
 
-	)
+//Add recipient to the campaign
+$('.rec-list__item input').on('click', function() {
+	//console.log($(this).prop('checked'))
+	campRecAxios(this)
+	
 
-const addToCampaign = (arr) => {
+})
+
+//Axios request
+const campRecAxios = () => {
+	console.log($(this).prop('checked')
+	/*let action = ($(this).prop('checked')) ? 'put' : 'delete'
+
+	let response = axios.post('/api/campaign', entityData)
+	.then(function(response) {
+		$('#message').addClass(response.data.status === 'ok' ? 'ok' : 'error').text(response.data.text).show()
+		if (!entityData.id) {
+			$('#'+entity+'Form input[type=text], #'+entity+'Form input[type=email]', '#'+entity+'Form textarea').each(function () {
+				$(this).val('');
+			});
+		}
+	})*/
 
 }
 
 
-const deleteFromCampaign = () => {
-
-}

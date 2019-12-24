@@ -11482,6 +11482,7 @@ h1 {
   display: flex;
   -webkit-box-align: center;
           align-items: center;
+  margin-bottom: 10px;
 }
 
 .rec-group__heading a {
