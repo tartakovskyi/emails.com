@@ -22,16 +22,17 @@ class Recipient extends Model
 	}
 
 	public static function getRecipientsByGroups ($id) {
-		$query = self::join('campaign_recipients', 'recipients.id', '=', 'campaign_recipients.rec_id')
-		->join('groups', 'recipients.group_id', '=', 'groups.id')
+		$query = self::join('groups', 'recipients.group_id', '=', 'groups.id')
+		->leftJoin('campaign_recipients', 'recipients.id', '=', 'campaign_recipients.rec_id')
 		->select('recipients.id', 'email','group_id','group_name','camp_id')
 		->where('status', 1)
 		->where('group_status', 1)
-		->where('camp_id', $id)
 		->get();
 
 		$count = $query->count();
 		$list = $query->groupBy('group_id')->toArray();
+dd($list[5]);
+
 
 		return ['count' => $count, 'list' => $list];
 	}

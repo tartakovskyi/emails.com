@@ -25,7 +25,7 @@ class CampaignController extends Controller
 			$campaignInfo = $campaign->getCampaignInfo($id);
 		}
 
-		$recipients = Recipient::getRecipientsByGroups();
+		$recipients = Recipient::getRecipientsByGroups($id);
 
 		$groups = Group::getGroupNames();
 
