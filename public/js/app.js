@@ -37192,17 +37192,21 @@ $(document).ready(function () {
 //Select all the recipients
 
 $('.rec-group__heading input[type=checkbox]').on('click', function (e) {
+  var campID = window.location.pathname.replace(/\D+/g, "");
   var arr = [];
   var status = $(this).prop('checked');
   var groupID = $(this).attr('name');
   $('#' + groupID + ' input[type=checkbox]').each(function () {
     if ($(this).prop('checked') !== status) {
-      arr.push($(this).attr('name'));
+      var recData = status ? {
+        'camp_id': campID,
+        'rec_id': $(this).attr('name')
+      } : $(this).attr('name');
+      arr.push(recData);
       $(this).prop('checked', status);
     }
   });
-  campRecAxios(arr, status);
-  console.log(arr);
+  campRecAxios(arr, status, campID);
 }); //Show recipients list
 
 $('.rec-group__heading a').on('click', function (e) {
@@ -37212,14 +37216,19 @@ $('.rec-group__heading a').on('click', function (e) {
 }); //Add/remove recipient to the campaign
 
 $('.rec-list__item input').on('click', function () {
+  var campID = window.location.pathname.replace(/\D+/g, "");
   var status = $(this).prop('checked');
-  var arr = [$(this).attr('name')];
-  campRecAxios(arr, status);
+  var arr = status ? {
+    'camp_id': campID,
+    'rec_id': $(this).attr('name')
+  } : [$(this).attr('name')];
+  var groupID = $(this).parent('ul').attr('id');
+  campRecAxios(arr, status, campID);
 }); //Axios request
 
-var campRecAxios = function campRecAxios(arr, status) {
+var campRecAxios = function campRecAxios(arr, status, campID) {
   var req = {
-    url: '/api/campaign/recipients/',
+    url: '/api/campaign/recipients/' + campID,
     method: status ? 'put' : 'delete',
     data: arr
   };

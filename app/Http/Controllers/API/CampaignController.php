@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\CampaignRecipients;
 
 class CampaignController extends Controller
 {
@@ -25,7 +26,7 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        echo 'store';
+        //
     }
 
     /**
@@ -63,11 +64,11 @@ class CampaignController extends Controller
     }
 
     public function addRecipients (Request $request) {
-        return $request;
+        $recipients = CampaignRecipients::insert($request->all());
     }
 
 
-    public function removeRecipients (Request $request) {
-        echo 'destroy';
+    public function removeRecipients (Request $request, $id) {
+        $recipients = CampaignRecipients::remove($request->all(), $id);
     }
 }

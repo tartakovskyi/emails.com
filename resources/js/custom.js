@@ -151,18 +151,18 @@ $(document).ready(function() {
 /*CAMPAIGN PAGE*/
 //Select all the recipients
 $('.rec-group__heading input[type=checkbox]').on('click', function(e) {
-	var reg = new RegExp('^[0-9]$')
+	var campID = window.location.pathname.replace(/\D+/g,"")
 	let arr = []
 	const status = $(this).prop('checked')
 	const groupID = $(this).attr('name')
 	$('#'+groupID+' input[type=checkbox]').each(function() {
 		if ($(this).prop('checked') !== status) {
-			let recData = {'camp_id': , 'rec_id': $(this).attr('name')}
-			arr.push()
+			let recData = (status) ? {'camp_id': campID, 'rec_id': $(this).attr('name')} : $(this).attr('name')
+			arr.push(recData)
 			$(this).prop('checked', status)
 		}
 	})
-	campRecAxios(arr,groupID,status)
+	campRecAxios(arr, status, campID)
 })
 
 //Show recipients list
@@ -174,17 +174,18 @@ $('.rec-group__heading a').on('click', function(e) {
 
 //Add/remove recipient to the campaign
 $('.rec-list__item input').on('click', function() {
+	var campID = window.location.pathname.replace(/\D+/g,"")
 	let status = $(this).prop('checked')
-	let arr = [$(this).attr('name')]
+	let arr = (status) ? {'camp_id': campID, 'rec_id': $(this).attr('name')} : [$(this).attr('name')]
 	let groupID = $(this).parent('ul').attr('id')
-	campRecAxios(arr,status, groupID)
+	campRecAxios(arr, status, campID)
 })
 
 //Axios request
-const campRecAxios = (arr, status) => { 
+const campRecAxios = (arr, status, campID) => { 
 
 	let req = {
-		url: '/api/campaign/recipients/',
+		url: '/api/campaign/recipients/'+campID,
 		method: (status) ? 'put' : 'delete',
 		data: arr
 	}

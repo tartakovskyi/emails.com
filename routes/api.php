@@ -29,7 +29,7 @@ Route::prefix('group')->group(function () {
 });
 
 Route::prefix('campaign')->group(function () {
-	Route::put('/recipients', 'API\CampaignController@addRecipients');
-	Route::delete('/recipients', 'API\CampaignController@removeRecipients');
+	Route::put('/recipients/{id}', 'API\CampaignController@addRecipients');
+	Route::delete('/recipients/{id}', 'API\CampaignController@removeRecipients');
 	//Route::put('/{id}', 'API\GroupController@destroy');
 });
