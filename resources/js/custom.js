@@ -151,11 +151,18 @@ $(document).ready(function() {
 /*CAMPAIGN PAGE*/
 //Select all the recipients
 $('.rec-group__heading input[type=checkbox]').on('click', function(e) {
-	let status = $(this).prop('checked')
-	let groupID = $(this).attr('name')
+	var reg = new RegExp('^[0-9]$')
+	let arr = []
+	const status = $(this).prop('checked')
+	const groupID = $(this).attr('name')
 	$('#'+groupID+' input[type=checkbox]').each(function() {
-		$(this).prop('checked', status)
+		if ($(this).prop('checked') !== status) {
+			let recData = {'camp_id': , 'rec_id': $(this).attr('name')}
+			arr.push()
+			$(this).prop('checked', status)
+		}
 	})
+	campRecAxios(arr,groupID,status)
 })
 
 //Show recipients list
@@ -165,29 +172,25 @@ $('.rec-group__heading a').on('click', function(e) {
 	$('#'+groupID).toggleClass('active')
 })
 
-
-//Add recipient to the campaign
+//Add/remove recipient to the campaign
 $('.rec-list__item input').on('click', function() {
-	//console.log($(this).prop('checked'))
-	campRecAxios(this)
-	
-
+	let status = $(this).prop('checked')
+	let arr = [$(this).attr('name')]
+	let groupID = $(this).parent('ul').attr('id')
+	campRecAxios(arr,status, groupID)
 })
 
 //Axios request
-const campRecAxios = () => {
-	console.log($(this).prop('checked')
-	/*let action = ($(this).prop('checked')) ? 'put' : 'delete'
+const campRecAxios = (arr, status) => { 
 
-	let response = axios.post('/api/campaign', entityData)
-	.then(function(response) {
-		$('#message').addClass(response.data.status === 'ok' ? 'ok' : 'error').text(response.data.text).show()
-		if (!entityData.id) {
-			$('#'+entity+'Form input[type=text], #'+entity+'Form input[type=email]', '#'+entity+'Form textarea').each(function () {
-				$(this).val('');
-			});
-		}
-	})*/
+	let req = {
+		url: '/api/campaign/recipients/',
+		method: (status) ? 'put' : 'delete',
+		data: arr
+	}
+
+	axios(req).then(function(response) {
+	})
 
 }
 

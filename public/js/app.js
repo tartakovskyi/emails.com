@@ -37064,7 +37064,167 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/vagrant/code/emails.loc/resources/js/custom.js: Unexpected token, expected \",\" (192:0)\n\n\u001b[0m \u001b[90m 190 | \u001b[39m\u001b[90m\t})*/\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 191 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 192 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 193 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 194 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 195 | \u001b[39m\u001b[0m\n    at Parser.raise (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:6975:17)\n    at Parser.unexpected (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:8368:16)\n    at Parser.expect (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:8354:28)\n    at Parser.parseCallExpressionArguments (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9387:14)\n    at Parser.parseSubscript (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9315:29)\n    at Parser.parseSubscripts (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9231:19)\n    at Parser.parseExprSubscripts (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9220:17)\n    at Parser.parseMaybeUnary (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9190:21)\n    at Parser.parseExprOps (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9056:23)\n    at Parser.parseMaybeConditional (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9029:23)\n    at Parser.parseMaybeAssign (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:8975:21)\n    at Parser.parseExpression (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:8925:23)\n    at Parser.parseStatementContent (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:10785:23)\n    at Parser.parseStatement (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:10656:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:11232:25)\n    at Parser.parseBlockBody (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:11219:10)\n    at Parser.parseBlock (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:11203:10)\n    at Parser.parseFunctionBody (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:10222:24)\n    at Parser.parseArrowExpression (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:10163:10)\n    at Parser.parseParenAndDistinguishExpression (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9789:12)\n    at Parser.parseExprAtom (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9548:21)\n    at Parser.parseExprSubscripts (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9210:23)\n    at Parser.parseMaybeUnary (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9190:21)\n    at Parser.parseExprOps (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9056:23)\n    at Parser.parseMaybeConditional (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:9029:23)\n    at Parser.parseMaybeAssign (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:8975:21)\n    at Parser.parseVar (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:11307:26)\n    at Parser.parseVarStatement (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:11126:10)\n    at Parser.parseStatementContent (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:10723:21)\n    at Parser.parseStatement (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:10656:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:11232:25)\n    at Parser.parseBlockBody (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:11219:10)\n    at Parser.parseTopLevel (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:10587:10)\n    at Parser.parse (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:12097:10)\n    at parse (/home/vagrant/code/emails.loc/node_modules/@babel/parser/lib/index.js:12148:38)\n    at parser (/home/vagrant/code/emails.loc/node_modules/@babel/core/lib/transformation/normalize-file.js:168:34)");
+/*SAVING RECIPIENT, GROUP OR CAMPAIGN INFORMATION */
+//Saving recipient information changes
+$('#saveBtn, #updateBtn, #deleteBtn').on('click', function (e) {
+  e.preventDefault();
+  var btnID = this.id;
+  var entityData = {};
+  $('#' + entity + 'Form input:not([type=checkbox]),  #' + entity + 'Form select, #' + entity + 'Form textarea').each(function () {
+    var name = $(this).attr('name');
+    entityData[name] = $(this).val();
+  });
+  $('#' + entity + 'Form [type=checkbox]').each(function () {
+    var name = $(this).attr('name');
+    entityData[name] = $(this).prop('checked') ? 1 : 0;
+  });
+  ajax(btnID, entityData);
+});
+
+var ajax = function ajax(btnID, entityData) {
+  var url;
+
+  switch (btnID) {
+    case 'saveBtn':
+      url = '/api/' + entity + '/save/';
+      break;
+
+    case 'updateBtn':
+      url = '/api/' + entity + '/save/' + entityData.id + '/';
+      break;
+
+    case 'deleteBtn':
+      url = '/api/' + entity + '/delete/' + entityData.id + '/';
+  }
+
+  var response = axios.post(url, entityData).then(function (response) {
+    $('#message').addClass(response.data.status === 'ok' ? 'ok' : 'error').text(response.data.text).show();
+
+    if (!entityData.id) {
+      $('#' + entity + 'Form input[type=text], #' + entity + 'Form input[type=email]', '#' + entity + 'Form textarea').each(function () {
+        $(this).val('');
+      });
+    }
+  });
+};
+/*FILTER FUNCTIONS*/
+//Choosing items
+
+
+$('.all').on('click', function () {
+  var status = $(this).prop('checked');
+  var id = $(this).data('target');
+  $('#' + id + ' input[type="checkbox"').each(function () {
+    $(this).prop('checked', status);
+  });
+  reloadList();
+});
+$('.items-set').on('click', function () {
+  var id = this.id;
+  $('[data-target=' + id + ']').prop('checked', false);
+  reloadList();
+}); //Forming the array of filter parameters
+
+var filterArr = {};
+
+var formFilterArr = function formFilterArr() {
+  $('.items-set').each(function () {
+    var paramName = $(this).data('param');
+    var paramArr = [];
+    $(this).find('input').each(function () {
+      if ($(this).prop('checked')) paramArr.push(this.name);
+    });
+    filterArr[paramName] = paramArr;
+  });
+}; //Adding 'Add new' button
+
+
+var makeAddBtn = function makeAddBtn(entity) {
+  var addBtn = '<div class="col-12 col-md-4 d-flex justify-content-end align-items-center"><a class="btn btn-success" href="/' + entity + '/edit/">Add New ' + entity + '</a></div>';
+  $('#' + entity + 'Table_wrapper .row:first-child .col-md-6').removeClass('col-md-6').addClass('col-md-4');
+  $col = $('#' + entity + 'Table_wrapper .row:first-child').append(addBtn);
+}; //Get recipients list with AJAX request 
+
+
+function reloadList() {
+  formFilterArr();
+  $('#' + entity + 'TableWrap').empty();
+  axios.post('/' + entity + '/filter/', filterArr).then(function (response) {
+    $('#' + entity + 'TableWrap').append(response.data);
+    $('#' + entity + 'Table').DataTable({
+      columnDefs: [{
+        orderable: false,
+        className: 'select-checkbox',
+        targets: 0
+      }, {
+        orderable: false,
+        className: 'select-checkbox',
+        targets: entity == 'recipient' ? 5 : 4
+      }],
+      "order": [[1, "asc"]]
+    });
+    $('.dataTables_length').addClass('bs-select');
+    makeAddBtn(entity);
+  });
+}
+
+$(document).ready(function () {
+  if (window.location.pathname.startsWith('/' + entity + '/list')) {
+    if (typeof recGroupId !== 'undefined' && typeof (recGroupId * 1) === 'number') {
+      $('#groupSet input').each(function () {
+        $(this).prop('checked', false);
+      });
+      $('#groupSet input[name=' + recGroupId + ']').trigger('click');
+    } else {
+      reloadList();
+    } //Enable mass checking of the list items 
+
+
+    $(document).on('click', '#' + entity + 'Table input[name=all]', function () {
+      var status = $(this).prop('checked');
+      $('#' + entity + 'Table td input[type="checkbox"]').each(function () {
+        $(this).prop('checked', status);
+      });
+    });
+  }
+});
+/*CAMPAIGN PAGE*/
+//Select all the recipients
+
+$('.rec-group__heading input[type=checkbox]').on('click', function (e) {
+  var arr = [];
+  var status = $(this).prop('checked');
+  var groupID = $(this).attr('name');
+  $('#' + groupID + ' input[type=checkbox]').each(function () {
+    if ($(this).prop('checked') !== status) {
+      arr.push($(this).attr('name'));
+      $(this).prop('checked', status);
+    }
+  });
+  campRecAxios(arr, status);
+  console.log(arr);
+}); //Show recipients list
+
+$('.rec-group__heading a').on('click', function (e) {
+  e.preventDefault();
+  var groupID = $(this).data('target');
+  $('#' + groupID).toggleClass('active');
+}); //Add/remove recipient to the campaign
+
+$('.rec-list__item input').on('click', function () {
+  var status = $(this).prop('checked');
+  var arr = [$(this).attr('name')];
+  campRecAxios(arr, status);
+}); //Axios request
+
+var campRecAxios = function campRecAxios(arr, status) {
+  var req = {
+    url: '/api/campaign/recipients/',
+    method: status ? 'put' : 'delete',
+    data: arr
+  };
+  axios(req).then(function (response) {});
+};
 
 /***/ }),
 

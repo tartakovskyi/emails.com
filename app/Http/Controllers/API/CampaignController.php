@@ -25,7 +25,7 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo 'store';
     }
 
     /**
@@ -60,5 +60,14 @@ class CampaignController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addRecipients (Request $request) {
+        return $request;
+    }
+
+
+    public function removeRecipients (Request $request) {
+        echo 'destroy';
     }
 }
