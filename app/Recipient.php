@@ -27,12 +27,12 @@ class Recipient extends Model
 		->select('recipients.id', 'email','group_id','group_name','camp_id')
 		->where('status', 1)
 		->where('group_status', 1)
+		->whereNull('camp_id')
+		->orWhere('camp_id', $id)
 		->get();
 
 		$count = $query->count();
 		$list = $query->groupBy('group_id')->toArray();
-dd($list[5]);
-
 
 		return ['count' => $count, 'list' => $list];
 	}

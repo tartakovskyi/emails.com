@@ -52,6 +52,7 @@
 <div class="row">
     <div class="col-12 d-flex flex-column align-items-center">
         <h2>Select campaign recipients</h2>
+        @isset ($campaign)
         <form id="campaignRecipients">
             @foreach ($recipients['list'] as $group => $groupRecipients)
             <div class="rec-group">
@@ -64,16 +65,17 @@
                     @foreach ($groupRecipients as $recipient)
                     <li class="rec-list__item">
                         <label class="d-flex align-items-center">
-                            <input type="checkbox" name="{{$recipient['id']}}"><a href="/recipient/edit/{{$recipient['id']}}" target="_blank">{{$recipient['email']}}</a>
+                            <input type="checkbox" name="{{$recipient['id']}}" @isset($recipient['camp_id']) checked @endisset><a href="/recipient/edit/{{$recipient['id']}}" target="_blank">{{$recipient['email']}}</a>
                         </label>
                     </li>
                     @endforeach
                 </ul>
             </div>
             @endforeach
-            <button class="btn btn-primary" id="saveCampRec">Save changes</button>
         </form>
-        
+        @else
+        <p>You should save the campaign before adding recipients!</p>
+        @endisset 
     </div>
 </div>
 @endsection

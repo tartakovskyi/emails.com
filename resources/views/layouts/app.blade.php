@@ -83,7 +83,18 @@
   <script src="/js/datatables.min.js"></script>
   @endisset
 
-  
+  <script>
+    $(document).ready(function() {
+      console.time('test');
+      $('.rec-list').each(function(){
+        if($(this).find('input:checked').length) {
+          $('.rec-group__heading input[name='+this.id+']').prop('checked', true)
+        }
+      })
+      console.timeEnd('test');
+
+    })
+  </script>
 
 </body>
 

@@ -9,6 +9,6 @@ class CampaignRecipients extends Model
     protected $fillable = ['camp_id', 'rec_id'];
 
     public static function remove ($data, $id) {
-    	self::where('camp_id', '=', $id)->whereIn('rec_id', $data)->delete();
+    	self::where('camp_id', $id)->whereIn('rec_id', $data)->delete();
     }
 }
