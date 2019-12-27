@@ -37098,6 +37098,10 @@ var ajax = function ajax(btnID, entityData) {
   }
 
   var response = axios.post(url, entityData).then(function (response) {
+    if (response.data.redirect) {
+      window.location.replace('/' + entity + '/edit/' + response.data.redirect);
+    }
+
     $('#message').addClass(response.data.status === 'ok' ? 'ok' : 'error').text(response.data.text).show();
 
     if (!entityData.id) {

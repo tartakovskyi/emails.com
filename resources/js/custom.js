@@ -44,6 +44,9 @@ const ajax = (btnID, entityData) => {
 
 	let response = axios.post(url, entityData)
 	.then(function(response) {
+		if (response.data.redirect) {
+			window.location.replace('/'+entity+'/edit/'+response.data.redirect)
+		}
 		$('#message').addClass(response.data.status === 'ok' ? 'ok' : 'error').text(response.data.text).show()
 		if (!entityData.id) {
 			$('#'+entity+'Form input[type=text], #'+entity+'Form input[type=email]', '#'+entity+'Form textarea').each(function () {
@@ -151,7 +154,6 @@ $(document).ready(function() {
 /*CAMPAIGN PAGE*/
 //Select all the recipients
 $('.rec-group__heading input[type=checkbox]').on('click', function(e) {
-	console.time('ajaxTime')
 	var campID = window.location.pathname.replace(/\D+/g,"")
 	let arr = []
 	const status = $(this).prop('checked')
@@ -164,7 +166,6 @@ $('.rec-group__heading input[type=checkbox]').on('click', function(e) {
 		}
 	})
 	campRecAxios(arr, status, campID)
-	console.timeEnd('ajaxTime')
 })
 
 //Show recipients list

@@ -29,7 +29,8 @@ Route::prefix('group')->group(function () {
 });
 
 Route::prefix('campaign')->group(function () {
+	Route::post('/save/{id?}', 'API\CampaignController@save');
+	Route::post('/delete/{id}', 'API\CampaignController@delete');
 	Route::put('/recipients/{id}', 'API\CampaignController@addRecipients');
 	Route::delete('/recipients/{id}', 'API\CampaignController@removeRecipients');
-	//Route::put('/{id}', 'API\GroupController@destroy');
 });

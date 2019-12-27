@@ -35,7 +35,7 @@ Route::prefix('group')->group(function() {
 Route::prefix('campaign')->group(function() {
 	Route::redirect('/', '/campaign/list');
     Route::get('/list', 'CampaignController@index');
-    Route::get('/edit/{id?}', 'CampaignController@edit');
+    Route::get('/edit/{id?}', 'CampaignController@edit')->name('campaign');;
     Route::post('/filter', 'CampaignController@filter');
 });
 
