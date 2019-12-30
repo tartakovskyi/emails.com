@@ -11,10 +11,11 @@
 |
 */
 
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 Route::get('/send', 'MailController@index');
 
@@ -40,6 +41,6 @@ Route::prefix('campaign')->group(function() {
 });
 
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
