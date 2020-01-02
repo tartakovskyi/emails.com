@@ -37155,15 +37155,12 @@ function reloadList() {
   $('#' + entity + 'TableWrap').empty();
   axios.post('/' + entity + '/filter/', filterArr).then(function (response) {
     $('#' + entity + 'TableWrap').append(response.data);
+    var targets = entity === 'recipient' ? [0, 5] : entity === 'group' ? [0, 4] : [3, 4];
     $('#' + entity + 'Table').DataTable({
       columnDefs: [{
         orderable: false,
         className: 'select-checkbox',
-        targets: 0
-      }, {
-        orderable: false,
-        className: 'select-checkbox',
-        targets: entity == 'recipient' ? 5 : 4
+        targets: targets
       }],
       "order": [[1, "asc"]]
     });
@@ -37196,7 +37193,6 @@ $(document).ready(function () {
 //Select all the recipients
 
 $('.rec-group__heading input[type=checkbox]').on('click', function (e) {
-  console.time('ajaxTime');
   var campID = window.location.pathname.replace(/\D+/g, "");
   var arr = [];
   var status = $(this).prop('checked');
@@ -37212,7 +37208,6 @@ $('.rec-group__heading input[type=checkbox]').on('click', function (e) {
     }
   });
   campRecAxios(arr, status, campID);
-  console.timeEnd('ajaxTime');
 }); //Show recipients list
 
 $('.rec-group__heading a').on('click', function (e) {
