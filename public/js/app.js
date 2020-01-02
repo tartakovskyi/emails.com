@@ -37196,7 +37196,6 @@ $(document).ready(function () {
 //Select all the recipients
 
 $('.rec-group__heading input[type=checkbox]').on('click', function (e) {
-  console.time('ajaxTime');
   var campID = window.location.pathname.replace(/\D+/g, "");
   var arr = [];
   var status = $(this).prop('checked');
@@ -37212,7 +37211,6 @@ $('.rec-group__heading input[type=checkbox]').on('click', function (e) {
     }
   });
   campRecAxios(arr, status, campID);
-  console.timeEnd('ajaxTime');
 }); //Show recipients list
 
 $('.rec-group__heading a').on('click', function (e) {
