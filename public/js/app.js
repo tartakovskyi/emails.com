@@ -37155,15 +37155,12 @@ function reloadList() {
   $('#' + entity + 'TableWrap').empty();
   axios.post('/' + entity + '/filter/', filterArr).then(function (response) {
     $('#' + entity + 'TableWrap').append(response.data);
+    var targets = entity === 'recipient' ? [0, 5] : entity === 'group' ? [0, 4] : [3, 4];
     $('#' + entity + 'Table').DataTable({
       columnDefs: [{
         orderable: false,
         className: 'select-checkbox',
-        targets: 0
-      }, {
-        orderable: false,
-        className: 'select-checkbox',
-        targets: entity == 'recipient' ? 5 : 4
+        targets: targets
       }],
       "order": [[1, "asc"]]
     });
