@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use App\Recipient;
 use App\Group;
 use App\CampaignRecipients;
@@ -47,10 +48,26 @@ class CampaignController extends Controller
 
 	public function send($id)
 	{
-		$campaign = new Campaign;
-		$campaignInfo = $campaign->getCampaignInfo($id);
 		$recipients = CampaignRecipients::getCampaignRecipients($id);
 
-		Campaign::send($campaignInfo, $recipients);
+		$campaign = Campaign::find($id);
+
+		$campaignInfo = $campaign->getCampaignInfo($id);
+
+		$campaign->started_at = Carbon::now();
+
+		$campaign->camp_status = 2;
+
+		$campaign->save();
+
+		$campaign->send($campaignInfo, $recipients);
+
+		$campaign->completed_at = Carbon::now();
+
+		$campaign->camp_status = 3;
+
+		$campaign->save();
+
+		return view('thank_you', ['campName' => $campaignInfo['camp_name']]);
 	}
 }

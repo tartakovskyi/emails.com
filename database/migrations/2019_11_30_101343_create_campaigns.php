@@ -20,7 +20,7 @@ class CreateCampaigns extends Migration
             $table->text('camp_letter', 10000);
             $table->dateTime('autostart_at', 0)->nullable();
             $table->dateTime('started_at', 0)->nullable();
-            $table->dateTime('complited_at', 0)->nullable();
+            $table->dateTime('completed_at', 0)->nullable();
             $table->timestamps();
         });
     }

@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Mail;
+
 
 class Campaign extends Model
 {
@@ -11,16 +13,16 @@ class Campaign extends Model
 	public static function getCampaignList ($data) {
 
 		return self::leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
-			->select('campaigns.id', 'camp_name', 'autostart_at', 'started_at', 'complited_at', 'camp_status', 'status_name')
-			->whereIn('camp_status', $data['status_id'])
-			->get()
-			->toArray();
+		->select('campaigns.id', 'camp_name', 'autostart_at', 'started_at', 'completed_at', 'camp_status', 'status_name')
+		->whereIn('camp_status', $data['status_id'])
+		->get()
+		->toArray();
 	}
 
 	public function getCampaignInfo ($id) {
 		
 		return $this->leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
-		->select('campaigns.id', 'camp_name', 'camp_letter', 'autostart_at', 'started_at', 'complited_at', 'camp_status', 'status_name')
+		->select('campaigns.id', 'camp_name', 'camp_letter', 'autostart_at', 'started_at', 'completed_at', 'camp_status', 'status_name')
 		->find($id)
 		->toArray();
 	}
@@ -32,14 +34,17 @@ class Campaign extends Model
 		$recipient->save();
 	}
 
-	public static function send ($campaignInfo, $recipients) {
+	public function send ($campaignInfo, $recipients) {
 
-		dd($recipients);
-/*
 		foreach ($recipients as $recipient) {
-			echo $recipient . '<br>';
-		}*/
 
+			Mail::send([], [], function ($m) use ($campaignInfo, $recipient)  {
+
+				$m->from('no-reply@emails.loc', 'Email Sending Service');
+
+				$m->to($recipient['email'], $recipient['first_name'].' '.$recipient['last_name'])->subject($campaignInfo['camp_name'])->setBody($campaignInfo['camp_letter']);;
+			});
+		}
 
 	}
 }
