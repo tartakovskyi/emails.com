@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Recipient;
 use App\Group;
+use App\CampaignRecipients;
 use App\Campaign;
 
 class CampaignController extends Controller
 {
-    public function index () {
+	public function index () {
 
-    	$statuses = DB::table('campaign_statuses')->get()->toArray();
+		$statuses = DB::table('campaign_statuses')->get()->toArray();
 
 		$data = ['entity' => 'campaign', 'list' => true, 'statuses' => $statuses];
 
@@ -42,5 +43,14 @@ class CampaignController extends Controller
 		$campArr = Campaign::getCampaignList($request->toArray());
 
 		return view('campaign_table', ['campArr' => $campArr]);
+	}
+
+	public function send($id)
+	{
+		$campaign = new Campaign;
+		$campaignInfo = $campaign->getCampaignInfo($id);
+		$recipients = CampaignRecipients::getCampaignRecipients($id);
+
+		Campaign::send($campaignInfo, $recipients);
 	}
 }

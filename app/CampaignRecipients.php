@@ -8,7 +8,16 @@ class CampaignRecipients extends Model
 {
     protected $fillable = ['camp_id', 'rec_id'];
 
+    public static function getCampaignRecipients ($id) {
+    	return self::select('email')
+    	->where('camp_id', $id)->
+    	leftJoin('recipients', 'recipients.id', '=', 'campaign_recipients.rec_id')
+    	->get()
+    	->toArray();
+    }
+
     public static function remove ($data, $id) {
     	self::where('camp_id', $id)->whereIn('rec_id', $data)->delete();
     }
+
 }

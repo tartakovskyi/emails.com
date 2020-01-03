@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
 
-Route::get('/send', 'MailController@index');
+Route::get('/send/{id}', 'MailController@index');
 
 Route::prefix('recipient')->group(function () {
 	Route::redirect('/', '/recipient/list');
@@ -38,9 +38,8 @@ Route::prefix('campaign')->group(function() {
     Route::get('/list', 'CampaignController@index');
     Route::get('/edit/{id?}', 'CampaignController@edit')->name('campaign');;
     Route::post('/filter', 'CampaignController@filter');
+    Route::get('/send/{id}', 'CampaignController@send');
 });
-
-
 
 
 Route::get('/home', 'HomeController@index')->name('home');
