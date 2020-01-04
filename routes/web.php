@@ -41,5 +41,17 @@ Route::prefix('campaign')->group(function() {
     Route::get('/send/{id}', 'CampaignController@send');
 });
 
+/*Route::get('/test', function () {
+    $campaigns = App\Campaign::all();
+    foreach ($campaigns as $campaign) {
+        if ($campaign->autostart_at) {
+            if ( Carbon\Carbon::parse($campaign->autostart_at)->format('Y-m-d H:i') == Carbon\Carbon::now()->format('Y-m-d H:i')) {
+                echo 'yes <br>';
+            } else {
+                echo 'no <br>'; 
+            }
+        }
+    }
+});*/
 
 Route::get('/home', 'HomeController@index')->name('home');

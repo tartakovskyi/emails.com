@@ -30,7 +30,11 @@
                 <textarea name="camp_letter" rows="10" placeholder="Enter template of the letter wich will be sending to the campaign recipients">@isset ($campaign) {{$campaign['camp_letter']}}@endisset</textarea>
             </label>
             <label>
-                <strong>Status</strong>
+                <strong>Autostart date</strong>
+                <input type="text" class="form-control" name="autostart_at" @isset ($campaign) value="{{$campaign['autostart_at']}}" @else placeholder="2020-01-01 11:11:11" @endisset>
+            </label>
+            <label>
+                <strong>Recipients</strong>
                 <a href="#campRecipients">@isset ($campaign) {{$recipients['count']}} @else 0 @endisset recipients</a>
                 <input type="hidden" name="camp_status" value="@isset ($campaign) {{$campaign['camp_status']}} @else 1 @endisset">
             </label>

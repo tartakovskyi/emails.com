@@ -26,14 +26,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
         $schedule->call(function () {
             $campaigns = Campaign::all();
-
-            
-            
-        })->daily();
+            foreach ($campaigns as $campaign) {
+                if ($campaign->autostart_at) {
+                    if ( Carbon::parse($campaign->autostart_at)->format('Y-m-d H:i') == Carbon::now()->format('Y-m-d H:i')) {
+                        Campaign::runCampaign($campaign->id);
+                    } 
+                }
+            }
+        })->everyMinute();
     }
 
     /**
