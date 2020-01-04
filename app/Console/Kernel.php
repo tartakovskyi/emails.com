@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Campaign;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,9 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\RunCampaignNow::class,
-        Commands\RunCampaignByScheldule::class
-
+        Commands\RunCampaignNow::class
     ];
 
     /**
@@ -29,6 +28,12 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->call(function () {
+            $campaigns = Campaign::all();
+
+            
+            
+        })->daily();
     }
 
     /**

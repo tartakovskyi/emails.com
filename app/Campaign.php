@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Mail;
+use Carbon\Carbon;
+use App\CampaignRecipients;
 
 
 class Campaign extends Model
@@ -34,7 +36,7 @@ class Campaign extends Model
 		$recipient->save();
 	}
 
-	public function send ($campaignInfo, $recipients) {
+	protected function send ($campaignInfo, $recipients) {
 
 		foreach ($recipients as $recipient) {
 
@@ -45,6 +47,32 @@ class Campaign extends Model
 				$m->to($recipient['email'], $recipient['first_name'].' '.$recipient['last_name'])->subject($campaignInfo['camp_name'])->setBody($campaignInfo['camp_letter']);;
 			});
 		}
+
+	}
+
+	static function runCampaign ($id) {
+
+		$recipients = CampaignRecipients::getCampaignRecipients($id);
+
+		$campaign = self::find($id);
+
+		$campaignInfo = $campaign->getCampaignInfo($id);
+
+		$campaign->started_at = Carbon::now();
+
+		$campaign->camp_status = 2;
+
+		$campaign->save();
+
+		$campaign->send($campaignInfo, $recipients);
+
+		$campaign->completed_at = Carbon::now();
+
+		$campaign->camp_status = 3;
+
+		$campaign->save();
+
+		return $campaignInfo;
 
 	}
 }
