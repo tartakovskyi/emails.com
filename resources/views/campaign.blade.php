@@ -36,7 +36,6 @@
             <label>
                 <strong>Recipients</strong>
                 <a href="#campRecipients">@isset ($campaign) {{$recipients['count']}} @else 0 @endisset recipients</a>
-                <input type="hidden" name="camp_status" value="@isset ($campaign) {{$campaign['camp_status']}} @else 1 @endisset">
             </label>
             <label>
                 <strong>Status</strong>
@@ -44,7 +43,8 @@
                 <input type="hidden" name="camp_status" value="@isset ($campaign) {{$campaign['camp_status']}} @else 1 @endisset">
             </label>
             <div class="btn-toolbar">
-                @isset ($campaign) <button class="btn btn-outline-danger mr-3" id="deleteBtn">Delete campaign</button> 
+                @isset ($campaign) <button class="btn btn-outline-danger mr-3" id="deleteBtn">Delete campaign</button>
+                <a class="btn btn-outline-primary mr-3" href="/campaign/send/{{$campaign['id']}}/">Start right now</a>
                 <button class="btn btn-primary" id="updateBtn">Save changes</button>
                 @else
                 <button class="btn btn-primary" id="saveBtn">Save campaign</button>
