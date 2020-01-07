@@ -37155,7 +37155,7 @@ function reloadList() {
   $('#' + entity + 'TableWrap').empty();
   axios.post('/' + entity + '/filter/', filterArr).then(function (response) {
     $('#' + entity + 'TableWrap').append(response.data);
-    var targets = entity === 'recipient' ? [0, 5] : entity === 'group' ? [0, 4] : [3, 4];
+    var targets = entity === 'recipient' ? [0, 5] : entity === 'group' ? [0, 4] : [4, 5];
     $('#' + entity + 'Table').DataTable({
       columnDefs: [{
         orderable: false,

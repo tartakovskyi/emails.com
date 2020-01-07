@@ -109,7 +109,7 @@ function reloadList() {
 
 		$('#'+entity+'TableWrap').append(response.data)
 
-		let targets = (entity === 'recipient') ? [0 , 5] : (entity === 'group') ? [0 , 4] : [3 , 4]
+		let targets = (entity === 'recipient') ? [0, 5] : (entity === 'group') ? [0, 4] : [4, 5]
 
 		$('#'+entity+'Table').DataTable({
 			columnDefs: [{

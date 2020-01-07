@@ -83,6 +83,14 @@
   <script src="/js/datatables.min.js"></script>
   @endisset
 
+  @if ($entity = 'campaign')
+  <script src="/js/inputmask.min.js"></script>
+  <script>
+    var selector = document.getElementsByClassName(".date-input");
+    Inputmask({"alias": "datetime"}).mask(selector);
+  </script>
+  @endif
+
   <script>
     $(document).ready(function() {
       $('.rec-list').each(function(){

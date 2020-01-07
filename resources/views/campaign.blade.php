@@ -31,7 +31,7 @@
             </label>
             <label>
                 <strong>Autostart date</strong>
-                <input type="text" class="form-control" name="autostart_at" @isset ($campaign) value="{{$campaign['autostart_at']}}" @else placeholder="2020-01-01 11:11:11" @endisset>
+                <input type="text" class="form-control date-input" name="autostart_at" @isset ($campaign) value="{{$campaign['autostart_at']}}" @else placeholder="2020-01-01 11:11:11" @endisset>
             </label>
             <label>
                 <strong>Recipients</strong>
