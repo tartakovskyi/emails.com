@@ -84,10 +84,14 @@
   @endisset
 
   @if ($entity = 'campaign')
-  <script src="/js/inputmask.min.js"></script>
+  <script src="/js/jquery.inputmask.min.js"></script>
   <script>
-    var selector = document.getElementsByClassName(".date-input");
-    Inputmask({"alias": "datetime"}).mask(selector);
+    $('.date-input').inputmask("datetime",{
+      inputFormat: "yyyy-mm-dd HH:MM",
+      placeholder: "_",
+      alias: "datetime"
+    });
+
   </script>
   @endif
 

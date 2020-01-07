@@ -37,8 +37,8 @@ class Recipient extends Model
 		->orWhere('camp_id', $id)
 		->get();
 
-		$count = $query->count();
 		$list = $query->groupBy('group_id')->toArray();
+		$count = $query->where('camp_id', $id)->count();
 
 		return ['count' => $count, 'list' => $list];
 	}
