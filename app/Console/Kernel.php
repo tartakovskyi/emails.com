@@ -35,7 +35,8 @@ class Kernel extends ConsoleKernel
                     } 
                 }
             }
-        })->everyMinute();
+        })->everyMinute()
+        ->runInBackground();
     }
 
     /**
