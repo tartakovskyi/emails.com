@@ -17,7 +17,7 @@ class CreateCampaigns extends Migration
             $table->increments('id');
             $table->string('camp_name');
             $table->tinyInteger('camp_status');
-            $table->text('camp_letter', 10000);
+            $table->string('camp_letter');
             $table->dateTime('autostart_at', 0)->nullable();
             $table->dateTime('started_at', 0)->nullable();
             $table->dateTime('completed_at', 0)->nullable();

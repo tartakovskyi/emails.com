@@ -28,10 +28,10 @@
             <label>
                 <strong>Letter template</strong>
                 <!-- <textarea name="camp_letter" rows="10" placeholder="Enter template of the letter wich will be sending to the campaign recipients">@isset ($campaign) {{$campaign['camp_letter']}}@endisset</textarea> -->
-                <select name="camp_letter">
+                <select name="camp_letter" class="form-control">
                     <option>Choose letter template</option>
                     @foreach ($templates as $template)
-                    <option value="{{$template}}">{{$template}}</option>
+                    <option value="{{$template}}" @if (isset($campaign['camp_letter']) && $template === $campaign['camp_letter']) selected @endif >{{$template}}</option>
                     @endforeach
                 </select>
             </label>

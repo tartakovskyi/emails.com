@@ -6,6 +6,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Mail;
+use File;
 use Carbon\Carbon;
 use App\CampaignRecipients;
 
@@ -63,11 +64,14 @@ class Campaign extends Model
 	{
 
 		foreach ($recipients as $recipient) {
-			Mail::send([], [], function ($m) use ($campaignInfo, $recipient)  {
+
+			$view = 'emails.' . $campaignInfo['camp_letter'];
+
+			Mail::send($view, $recipient, function ($m) use ($campaignInfo, $recipient)  {
 
 				$m->from('no-reply@emails.loc', 'Email Sending Service');
 
-				$m->to($recipient['email'], $recipient['first_name'] . ' ' . $recipient['last_name'])->subject($campaignInfo['camp_name'])->setBody($campaignInfo['camp_letter']);
+				$m->to($recipient['email'], $recipient['first_name'] . ' ' . $recipient['last_name'])->subject($campaignInfo['camp_name']);
 			});
 		}
 	}
