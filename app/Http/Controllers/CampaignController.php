@@ -32,7 +32,9 @@ class CampaignController extends Controller
 
 		$groups = Group::getGroupNames();
 
-		$data = ['campaign' => $campaignInfo, 'recipients' => $recipients, 'groups' => $groups, 'entity' => 'campaign'];
+		$templates = Campaign::makeTemplatesList();
+
+		$data = ['campaign' => $campaignInfo, 'recipients' => $recipients, 'groups' => $groups, 'templates' => $templates, 'entity' => 'campaign'];
 
 		return view('campaign', $data);
 	}

@@ -27,7 +27,13 @@
             </label>
             <label>
                 <strong>Letter template</strong>
-                <textarea name="camp_letter" rows="10" placeholder="Enter template of the letter wich will be sending to the campaign recipients">@isset ($campaign) {{$campaign['camp_letter']}}@endisset</textarea>
+                <!-- <textarea name="camp_letter" rows="10" placeholder="Enter template of the letter wich will be sending to the campaign recipients">@isset ($campaign) {{$campaign['camp_letter']}}@endisset</textarea> -->
+                <select name="camp_letter">
+                    <option>Choose letter template</option>
+                    @foreach ($templates as $template)
+                    <option value="{{$template}}">{{$template}}</option>
+                    @endforeach
+                </select>
             </label>
             <label>
                 <strong>Autostart date</strong>

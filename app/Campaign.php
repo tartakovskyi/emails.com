@@ -43,6 +43,21 @@ class Campaign extends Model
 		$recipient->save();
 	}
 
+	public static function makeTemplatesList()
+	{
+
+		$files = File::allFiles(resource_path('views/emails'));
+		$views = [];
+
+		foreach ($files as $file) {
+			$fileName = pathinfo($file)['filename'];
+			$viewName = str_replace('.blade','',$fileName);
+			$views[] = $viewName;
+		}
+
+		return $views;
+	}
+
 
 	protected function send($campaignInfo, $recipients)
 	{
