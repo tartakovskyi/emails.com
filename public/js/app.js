@@ -37153,7 +37153,7 @@ var makeAddBtn = function makeAddBtn(entity) {
 function reloadList() {
   formFilterArr();
   $('#' + entity + 'TableWrap').empty();
-  axios.post('/' + entity + '/filter/', filterArr).then(function (response) {
+  axios.post('/' + entity + '/filter', filterArr).then(function (response) {
     $('#' + entity + 'TableWrap').append(response.data);
     var targets = entity === 'recipient' ? [0, 5] : entity === 'group' ? [0, 4] : [4, 5];
     $('#' + entity + 'Table').DataTable({

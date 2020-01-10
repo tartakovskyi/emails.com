@@ -104,7 +104,7 @@ function reloadList() {
 
 	$('#'+entity+'TableWrap').empty()
 
-	axios.post('/'+entity+'/filter/', filterArr)
+	axios.post('/'+entity+'/filter', filterArr)
 	.then(function (response) {
 
 		$('#'+entity+'TableWrap').append(response.data)
