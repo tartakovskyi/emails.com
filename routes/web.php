@@ -48,15 +48,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-/*Route::get('/test', function () {
-    $campaigns = App\Campaign::all();
-    foreach ($campaigns as $campaign) {
-        if ($campaign->autostart_at) {
-            if ( Carbon\Carbon::parse($campaign->autostart_at)->format('Y-m-d H:i') == Carbon\Carbon::now()->format('Y-m-d H:i')) {
-                echo 'yes <br>';
-            } else {
-                echo 'no <br>'; 
-            }
-        }
+Route::get('/test', function () {
+    $files = File::allFiles(resource_path('views/emails'));
+    $views = [];
+
+    foreach ($files as $file) {
+        $fileName = pathinfo($file)['filename'];
+        $viewName = str_replace('.blade','',$fileName);
+        $views[] = $viewName;
     }
-});*/
+});
