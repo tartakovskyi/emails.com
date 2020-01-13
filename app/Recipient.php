@@ -43,8 +43,9 @@ class Recipient extends Model
 		return ['count' => $count, 'list' => $list];
 	}
 
-	public function group ()
+	public function group()
 	{
+		
 		return $this->hasOne('App\Group', 'id', 'group_id');
 	}
 

@@ -23,13 +23,9 @@ class RecipientsСontroller extends Controller
 		$recInfo = null;
 
 		if ($id) {
-			//$recipient = new Recipient;
-			//$recInfo = $recipient->getRecipientInfo($id);
 			$recipient = Recipient::find($id);
 			$recipient->group_name = $recipient->group->group_name;
 		}
-
-		dd($recipient);
 
 		$groupArr = Group::getGroupNames();
 
