@@ -37086,15 +37086,15 @@ var ajax = function ajax(btnID, entityData) {
 
   switch (btnID) {
     case 'saveBtn':
-      url = '/api/' + entity + '/save/';
+      url = '/api/' + entity + '/save';
       break;
 
     case 'updateBtn':
-      url = '/api/' + entity + '/save/' + entityData.id + '/';
+      url = '/api/' + entity + '/save/' + entityData.id;
       break;
 
     case 'deleteBtn':
-      url = '/api/' + entity + '/delete/' + entityData.id + '/';
+      url = '/api/' + entity + '/delete/' + entityData.id;
   }
 
   var response = axios.post(url, entityData).then(function (response) {
