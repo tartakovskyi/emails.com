@@ -43,18 +43,10 @@ class Recipient extends Model
 		return ['count' => $count, 'list' => $list];
 	}
 
-
-	public function getRecipientInfo($id)
+	public function group ()
 	{
-
-		return $this->hasOne('App\Group', 'id', 'group_id')->find($id)->toArray();
-
-		/*return $this->leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
-		->select('recipients.id', 'email', 'first_name', 'last_name', 'status', 'group_id', 'group_name')
-		->find($id)
-		->toArray();*/
+		return $this->hasOne('App\Group', 'id', 'group_id');
 	}
-
 
 	public function saveRecipient($data, $id = null)
 	{
