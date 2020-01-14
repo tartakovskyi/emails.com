@@ -31,7 +31,7 @@ class RecipientsСontroller extends Controller
 
 		$title = $id ? 'Recipient information' : 'Add new recipient';
 
-		$data = ['recipient' => $recInfo, 'groups' => $groupArr, 'entity' => 'recipient'];
+		$data = ['recipient' => $recipient, 'groups' => $groupArr, 'entity' => 'recipient'];
 
 		return view('recipient', $data);
 	}

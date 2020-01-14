@@ -49,12 +49,5 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 Route::get('/test', function () {
-    $files = File::allFiles(resource_path('views/emails'));
-    $views = [];
-
-    foreach ($files as $file) {
-        $fileName = pathinfo($file)['filename'];
-        $viewName = str_replace('.blade','',$fileName);
-        $views[] = $viewName;
-    }
+    phpinfo();
 });
