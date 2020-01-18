@@ -22,9 +22,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('recipient')->group(function () {
         Route::redirect('/', '/recipient/list');
-        Route::get('/list', 'RecipientsСontroller@index');
-        Route::get('/edit/{id?}', 'RecipientsСontroller@edit');
-        Route::post('/filter', 'RecipientsСontroller@filter');
+        Route::get('/list', 'RecipientsController@index');
+        Route::get('/edit/{id?}', 'RecipientsController@edit');
+        Route::post('/filter', 'RecipientsController@filter');
     });
 
     Route::prefix('group')->group(function() {
