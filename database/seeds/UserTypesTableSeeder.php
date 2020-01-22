@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
-class UserGroupsTableSeeder extends Seeder
+class UserTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +13,7 @@ class UserGroupsTableSeeder extends Seeder
     public function run()
     {
         foreach (['Admin', 'User'] as $value) {
-    		DB::table('campaign_statuses')->insert([
+    		DB::table('user_types')->insert([
     			'name' => $value,
     			'created_at' => Carbon::now(),
     			'updated_at' => Carbon::now()

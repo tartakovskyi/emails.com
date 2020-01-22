@@ -19,6 +19,7 @@
 <body id="page-top">
 
   <!-- Navigation -->
+  @auth
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Email Sending Service</a>
@@ -36,9 +37,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/campaign/list/">Campaigns</a>
           </li>
+          @can('admin')
           <li class="nav-item">
             <a class="nav-link" href="/users/list/">Users</a>
           </li>
+          @endcan
           <li class="nav-item">
             <form action="/logout" method="post">
               @csrf
@@ -52,6 +55,7 @@
       </div>
     </div>
   </nav>
+  @endauth
 
   <header class="bg-primary text-white">
     <div class="container text-center">
