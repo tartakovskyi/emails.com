@@ -11518,3 +11518,10 @@ h1 {
   font-size: 14px;
 }
 
+.nav-item svg {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  color: inherit;
+}
+

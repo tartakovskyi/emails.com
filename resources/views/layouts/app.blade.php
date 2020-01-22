@@ -36,6 +36,18 @@
           <li class="nav-item">
             <a class="nav-link" href="/campaign/list/">Campaigns</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/list/">Users</a>
+          </li>
+          <li class="nav-item">
+            <form action="/logout" method="post">
+              @csrf
+              <button type="submit" class="btn btn-link icon-link d-flex align-items-center">
+                <svg><use xlink:href="/img/icons.svg#logout"></use></svg>
+                Log Out
+              </button>
+            </form>
+          </li>
         </ul>
       </div>
     </div>
