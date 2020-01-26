@@ -13,6 +13,12 @@ class Recipient extends Model
 
 	protected $fillable = ['email', 'first_name', 'last_name', 'group_id', 'status'];
 
+	public function group() 
+	{
+
+		return $this->hasMany('App\Group');
+	}
+
 	public static function getRecipients($data)
 	{
 
