@@ -18,7 +18,7 @@ class Campaign extends Model
 
 	public function campaignStatus()
 	{
-		return $this->hasMany('App\CampaignStatus','id', 'camp_status');
+		return $this->hasOne('App\CampaignStatus','id', 'camp_status');
 	}
 
 	public static function getCampaignList($data)
@@ -35,7 +35,8 @@ class Campaign extends Model
 
 	public function getCampaignInfo($id)
 	{
-		dd($this->with('campaignStatus')->find($id));
+		return $this->with('campaignStatus')->find($id);
+		//dd($this->with('campaignStatus')->find($id));
 		
 		/*return $this->leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
 		->select('campaigns.id', 'camp_name', 'camp_letter', 'autostart_at', 'started_at', 'completed_at', 'camp_status', 'status_name')

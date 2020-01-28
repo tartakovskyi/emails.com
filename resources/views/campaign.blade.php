@@ -18,16 +18,15 @@
             @isset ($campaign)
             <label>
                 <strong>ID</strong>
-                <input type="text" class="form-control" readonly name="id" value="{{$campaign['id']}}">
+                <input type="text" class="form-control" readonly name="id" value="{{$campaign->id}}">
             </label>
             @endisset
             <label>
                 <strong>Campaign name</strong>
-                <input type="text" class="form-control" name="camp_name" @isset ($campaign) value="{{$campaign['camp_name']}}" @else placeholder="Motor-car enthusiasts" @endisset>
+                <input type="text" class="form-control" name="camp_name" @isset ($campaign) value="{{$campaign->camp_name}}" @else placeholder="Motor-car enthusiasts" @endisset>
             </label>
             <label>
                 <strong>Letter template</strong>
-                <!-- <textarea name="camp_letter" rows="10" placeholder="Enter template of the letter wich will be sending to the campaign recipients">@isset ($campaign) {{$campaign['camp_letter']}}@endisset</textarea> -->
                 <select name="camp_letter" class="form-control">
                     <option>Choose letter template</option>
                     @foreach ($templates as $template)
@@ -37,7 +36,7 @@
             </label>
             <label>
                 <strong>Autostart date</strong>
-                <input type="text" class="form-control date-input" name="autostart_at" @isset ($campaign) value="{{$campaign['autostart_at']}}" @endisset placeholder="2020-01-01 11:11" >
+                <input type="text" class="form-control date-input" name="autostart_at" @isset ($campaign) value="{{$campaign->autostart_at}}" @endisset placeholder="2020-01-01 11:11" >
             </label>
             <label>
                 <strong>Recipients</strong>
@@ -45,12 +44,12 @@
             </label>
             <label>
                 <strong>Status</strong>
-                <span>@isset ($campaign) {{$campaign['status_name']}} @else New @endisset</span>
-                <input type="hidden" name="camp_status" value="@isset ($campaign) {{$campaign['camp_status']}} @else 1 @endisset">
+                <span>@isset ($campaign) {{$campaign->campaignStatus->status_name}} @else New @endisset</span>
+                <input type="hidden" name="camp_status" value="@isset ($campaign) {{$campaign->campaignStatus->status_name}} @else 1 @endisset">
             </label>
             <div class="btn-toolbar">
                 @isset ($campaign) <button class="btn btn-outline-danger mr-3" id="deleteBtn">Delete campaign</button>
-                <a class="btn btn-outline-primary mr-3" href="/campaign/send/{{$campaign['id']}}/">Start right now</a>
+                <a class="btn btn-outline-primary mr-3" href="/campaign/send/{{$campaign->id}}/">Start right now</a>
                 <button class="btn btn-primary" id="updateBtn">Save changes</button>
                 @else
                 <button class="btn btn-primary" id="saveBtn">Save campaign</button>
