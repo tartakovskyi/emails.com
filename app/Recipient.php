@@ -13,21 +13,12 @@ class Recipient extends Model
 
 	protected $fillable = ['email', 'first_name', 'last_name', 'group_id', 'status'];
 
-	public function group() 
-	{
-
-		return $this->hasMany('App\Group');
-	}
-
 	public static function getRecipients($data)
 	{
-
-		return self::leftJoin('groups', 'recipients.group_id', '=', 'groups.id')
-		->select('recipients.id', 'email', 'first_name', 'last_name', 'status', 'group_id', 'status', 'group_name')
+		return self::with('group')
 		->whereIn('status', $data['status'])
 		->whereIn('group_id', $data['group_id'])
-		->get()
-		->toArray();
+		->get();
 	}
 
 

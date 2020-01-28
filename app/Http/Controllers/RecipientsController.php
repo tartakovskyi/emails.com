@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cookie;
 use App\Recipient;
 use App\Group;
 
-class RecipientsСontroller extends Controller
+class RecipientsController extends Controller
 {
 
 	public function index(Request $request) {
@@ -42,6 +42,11 @@ class RecipientsСontroller extends Controller
 		$recArr = Recipient::getRecipients($request->toArray());
 
 		return view('recipient_table', ['recArr' => $recArr]);
+	}
+
+	public function test(Request $request) {
+		$recipients = Recipient::with('group')->get();
+		dd($recipients[0]);
 	}
 
 }
