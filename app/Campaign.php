@@ -16,25 +16,26 @@ class Campaign extends Model
 {
 	protected $fillable = ['camp_name', 'camp_status', 'camp_letter', 'autostart_at'];
 
-	protected function campaignStatus()
+	public function campaignStatus()
 	{
-		return self::belongsTo('App\CampaignStatus');
+		return $this->hasMany('App\CampaignStatus','id', 'camp_status');
 	}
 
 	public static function getCampaignList($data)
 	{
+		dd(self::with('campaignStatus')->get());
 
-		return self::leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
+		/*return self::leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
 		->select('campaigns.id', 'camp_name', 'autostart_at', 'started_at', 'completed_at', 'camp_status', 'status_name')
 		->whereIn('camp_status', $data['status_id'])
 		->get()
-		->toArray();
+		->toArray();*/
 	}
 
 
 	public function getCampaignInfo($id)
 	{
-		dd($this::find($id)->campaignStatus);
+		dd($this->with('campaignStatus')->find($id));
 		
 		/*return $this->leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
 		->select('campaigns.id', 'camp_name', 'camp_letter', 'autostart_at', 'started_at', 'completed_at', 'camp_status', 'status_name')
