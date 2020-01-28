@@ -49,6 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-Route::get('/test', function () {
-    phpinfo();
-});
+/*Route::get('/test', function () {
+    dd(App\Recipient::with('group')->get());
+});*/
+
+Route::get('/test', 'RecipientsController@test');

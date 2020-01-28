@@ -12,12 +12,12 @@
     <tbody>
         @foreach ($recArr as $recipient)
         <tr>
-            <td><input type="checkbox" name="rec_{{$recipient['id']}}"></td>
-            <td>{{$recipient['email']}}</td>
-            <td>{{$recipient['last_name']}}, {{$recipient['first_name']}}</td>
-            <td>{{$recipient['group_name']}}</td>
-            <td>@if ($recipient['status'] === 1) Active @else Not active @endif</td>
-            <td><a href="/recipient/edit/{{$recipient['id']}}/">edit</a></td>        
+            <td><input type="checkbox" name="rec_{{$recipient->id}}"></td>
+            <td>{{$recipient->email}}</td>
+            <td>{{$recipient->last_name}}, {{$recipient->first_name}}</td>
+            <td>{{$recipient->group->group_name}}</td>
+            <td>@if ($recipient->status === 1) Active @else Not active @endif</td>
+            <td><a href="/recipient/edit/{{$recipient->id}}/">edit</a></td>        
         </tr>
         @endforeach
     </tbody>
