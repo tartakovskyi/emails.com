@@ -8,10 +8,11 @@ class CampaignRecipients extends Model
 {
     protected $fillable = ['camp_id', 'rec_id'];
 
-    public static function getCampaignRecipients ($id) {
+    public static function getCampaignRecipients($id) {
+
     	return self::select('email', 'first_name', 'last_name')
     	->where('camp_id', $id)
-        ->leftJoin('recipients', 'recipients.id', '=', 'campaign_recipients.rec_id')
+        ->join('recipients', 'recipients.id', '=', 'campaign_recipients.rec_id')
     	->get()
     	->toArray();
     }

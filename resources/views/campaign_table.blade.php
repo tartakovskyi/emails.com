@@ -12,12 +12,12 @@
     <tbody>
         @foreach ($campArr as $campaign)
         <tr>
-            <td>{{$campaign['camp_name']}}</td>
-            <td>{{$campaign['status_name']}}</td>
-            <td>{{$campaign['autostart_at']}}</td>
-            <td>{{$campaign['completed_at']}}</td>
-            <td>@if ($campaign['status_name'] !== 'Completed') <a class="btn btn-primary" href="/campaign/send/{{$campaign['id']}}/">Start right now</a> @endif</td>
-            <td><a href="/campaign/edit/{{$campaign['id']}}/">edit</a></td>
+            <td>{{$campaign->camp_name}}</td>
+            <td>{{$campaign->campaignStatus->status_name}}</td>
+            <td>{{$campaign->autostart_at}}</td>
+            <td>{{$campaign->completed_at}}</td>
+            <td>@if ($campaign->campaignStatus->status_name !== 'Completed') <a class="btn btn-primary" href="/campaign/send/{{$campaign->id}}/">Start right now</a> @endif</td>
+            <td><a href="/campaign/edit/{{$campaign->id}}/">edit</a></td>
         </tr>
         @endforeach
     </tbody>

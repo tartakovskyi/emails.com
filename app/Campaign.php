@@ -16,32 +16,26 @@ class Campaign extends Model
 {
 	protected $fillable = ['camp_name', 'camp_status', 'camp_letter', 'autostart_at'];
 
+
 	public function campaignStatus()
 	{
+
 		return $this->hasOne('App\CampaignStatus','id', 'camp_status');
 	}
 
+
 	public static function getCampaignList($data)
 	{
-		dd(self::with('campaignStatus')->get());
 
-		/*return self::leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
-		->select('campaigns.id', 'camp_name', 'autostart_at', 'started_at', 'completed_at', 'camp_status', 'status_name')
-		->whereIn('camp_status', $data['status_id'])
-		->get()
-		->toArray();*/
+		return self::whereIn('camp_status', $data['status_id'])->with('campaignStatus')->get();
+
 	}
 
 
 	public function getCampaignInfo($id)
 	{
+
 		return $this->with('campaignStatus')->find($id);
-		//dd($this->with('campaignStatus')->find($id));
-		
-		/*return $this->leftJoin('campaign_statuses', 'campaigns.camp_status', '=', 'campaign_statuses.id')
-		->select('campaigns.id', 'camp_name', 'camp_letter', 'autostart_at', 'started_at', 'completed_at', 'camp_status', 'status_name')
-		->find($id)
-		->toArray();*/
 	}
 
 
@@ -74,13 +68,13 @@ class Campaign extends Model
 
 		foreach ($recipients as $recipient) {
 
-			$view = 'emails.' . $campaignInfo['camp_letter'];
+			$view = 'emails.' . $campaignInfo->camp_letter;
 
 			Mail::send($view, $recipient, function ($m) use ($campaignInfo, $recipient)  {
 
 				$m->from('no-reply@emails.loc', 'Email Sending Service');
 
-				$m->to($recipient['email'], $recipient['first_name'] . ' ' . $recipient['last_name'])->subject($campaignInfo['camp_name']);
+				$m->to($recipient['email'], $recipient['first_name'] . ' ' . $recipient['last_name'])->subject($campaignInfo->camp_name);
 			});
 		}
 	}

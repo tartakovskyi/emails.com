@@ -24,7 +24,7 @@ class CampaignController extends Controller
 		$campaignInfo = null;
 
 		if ($id) {
-			$campaign = new Campaign;
+			$campaign = new Campaign();
 			$campaignInfo = $campaign->getCampaignInfo($id);
 		}
 
