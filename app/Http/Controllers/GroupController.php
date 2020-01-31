@@ -26,8 +26,6 @@ class GroupController extends Controller
 
 		$recipients = Recipient::countRecipients($id);
 
-		$title = $id ? 'Group information' : 'Add new group';
-
 		$data = ['group' => $groupInfo, 'recipients' => $recipients, 'entity' => 'group'];
 
 		return view('group', $data);

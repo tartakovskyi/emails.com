@@ -3,35 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\UserType;
 
 class UserController extends Controller
 {
-    public function index () {
+    public function index() 
+    {
 
-		$data = ['entity' => 'group', 'list' => true];
+		$data = ['entity' => 'user', 'list' => true];
 
-		return view('group_list', $data);
+		return view('user_list', $data);
 	}
 
-	/*public function edit($id = null) {
 
-		$groupInfo = null;
+	public function edit($id = null) 
+	{
 
-		if ($id) {
-			$group = new Group;
-			$groupInfo = $group->getGroupInfo($id);
-		}
+		$userInfo = $id ? User::find($id) : null;
 
-		$recipients = Recipient::countRecipients($id);
+		$userTypes = UserType::all();
 
-		$title = $id ? 'Group information' : 'Add new group';
+		$data = ['user' => $userInfo, 'types' => $userTypes,  'entity' => 'user'];
 
-		$data = ['group' => $groupInfo, 'recipients' => $recipients, 'entity' => 'group'];
-
-		return view('group', $data);
+		return view('user', $data);
 	}
 
-	public function filter(Request $request) {
+	/*public function filter(Request $request) {
 
 		$groupArr = Group::getGroupList($request->toArray());
 

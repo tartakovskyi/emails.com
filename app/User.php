@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'type_id'
     ];
 
     /**
@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public static function saveUser($data, $id = null)
+    {
+
+        $recipient = self::find($id);
+        $recipient->fill($data);
+        $recipient->save();
+    }
 }

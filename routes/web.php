@@ -43,6 +43,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/send/{id}', 'CampaignController@send');
     });
 
+    Route::prefix('user')->group(function() {
+        Route::redirect('/', '/user/list');
+        Route::get('/list', 'UserController@index');
+        Route::get('/edit/{id?}', 'UserController@edit');
+        Route::post('/filter', 'UserController@filter');
+    });
+
     Route::get('/send/{id}', 'MailController@index');
 });
 

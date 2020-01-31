@@ -28,6 +28,11 @@ Route::prefix('group')->group(function () {
 	Route::post('/delete/{id}', 'API\GroupController@delete');
 });
 
+Route::prefix('user')->group(function () {
+	Route::post('/save/{id?}', 'API\UserController@save');
+	Route::post('/delete/{id}', 'API\UserController@delete');
+});
+
 Route::prefix('campaign')->group(function () {
 	Route::post('/save/{id?}', 'API\CampaignController@save');
 	Route::post('/delete/{id}', 'API\CampaignController@delete');
