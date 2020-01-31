@@ -37,12 +37,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public static function saveUser($data, $id = null)
-    {
-
-        $recipient = self::find($id);
-        $recipient->fill($data);
-        $recipient->save();
-    }
 }
