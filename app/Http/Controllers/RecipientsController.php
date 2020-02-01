@@ -20,7 +20,7 @@ class RecipientsController extends Controller
 
 	public function edit($id = null) {
 
-		$recInfo = null;
+		$recipient = null;
 
 		if ($id) {
 			$recipient = Recipient::find($id);
@@ -44,9 +44,5 @@ class RecipientsController extends Controller
 		return view('recipient_table', ['recArr' => $recArr]);
 	}
 
-	public function test(Request $request) {
-		$recipients = Recipient::with('group')->get();
-		dd($recipients[0]);
-	}
 
 }

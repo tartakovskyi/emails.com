@@ -7,6 +7,9 @@
             <a class="btn btn-primary btn-lg btn-block" href="/recipient/list/">Recipients</a>
             <a class="btn btn-primary btn-lg btn-block" href="/group/list/">Groups</a>
             <a class="btn btn-primary btn-lg btn-block" href="/campaign/list/">Campaigns</a>
+            @can('admin')
+            <a class="btn btn-primary btn-lg btn-block" href="/user/list/">Users</a>
+            @endcan
         </div>
     </div>
 </div>

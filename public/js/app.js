@@ -37153,7 +37153,6 @@ var makeAddBtn = function makeAddBtn(entity) {
 function reloadList() {
   formFilterArr();
   $('#' + entity + 'TableWrap').empty();
-  console.time('TEST');
   axios.post('/' + entity + '/filter', filterArr).then(function (response) {
     $('#' + entity + 'TableWrap').append(response.data);
     var targets = entity === 'recipient' ? [0, 5] : entity === 'group' ? [0, 4] : [4, 5];
@@ -37168,7 +37167,6 @@ function reloadList() {
     $('.dataTables_length').addClass('bs-select');
     makeAddBtn(entity);
   });
-  console.timeEnd('TEST');
 }
 
 $(document).ready(function () {

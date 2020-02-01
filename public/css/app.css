@@ -11362,6 +11362,15 @@ section {
   padding: 70px 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+main {
+  min-height: calc(100% - 55px - 213px - 119px);
+}
+
 h1 {
   font-size: 3rem;
 }

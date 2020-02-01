@@ -10,8 +10,9 @@ class UserController extends Controller
 {
     public function index() 
     {
+    	$types = UserType::all();
 
-		$data = ['entity' => 'user', 'list' => true];
+		$data = ['entity' => 'user', 'types' => $types, 'list' => true];
 
 		return view('user_list', $data);
 	}
@@ -29,10 +30,10 @@ class UserController extends Controller
 		return view('user', $data);
 	}
 
-	/*public function filter(Request $request) {
+	public function filter(Request $request) {
 
-		$groupArr = Group::getGroupList($request->toArray());
+		$users = User::with('type')->get();
 
-		return view('group_table', ['groupArr' => $groupArr]);
-	}*/
+		return view('user_table', ['users' => $users]);
+	}
 }

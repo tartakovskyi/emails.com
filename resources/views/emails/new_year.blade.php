@@ -1,6 +1,4 @@
 Dear {{$first_name}}, 
-
-<p>It must be exhausting running around hunting for the best present in crowded malls and stores. Don’t worry, we’ve got a solution for you!</p>
-<p>Order from our online shop now and lighten your busy holiday schedule by getting your items shipped to your door before Christmas!</p>
-<p>Enjoy 30% off on all our lineup of products and surprise your loved ones with the gift they deserve.</p>
-<p>We wish you a Merry Christmas!</p>
+<p>As this new year marks a new beginning in our life, I would like to take this opportunity to thank each one of you for your excellent performances last year. Last year has been a great year as far as achieving our targets are concerned.</p>
+<p>We have a huge number of projects coming up next year, and I am sure that with all your dedication and determination, we will be able to complete those also in time. I thank you all for your support and hope this relationship continues, and we achieve success together.</p>
+<p>My best wishes to you and your families for a safe, happy holiday season and a happy new year.</p>
